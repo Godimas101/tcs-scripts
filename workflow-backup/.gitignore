@@ -1,0 +1,12 @@
+# Workflow backup configurations
+.env
+.env.local
+*.key
+
+# Local test outputs
+test_backup/
+temp/
+
+# OS files
+.DS_Store
+Thumbs.db
