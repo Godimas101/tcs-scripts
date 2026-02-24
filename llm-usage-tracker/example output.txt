@@ -1,0 +1,1329 @@
+[
+  {
+    "passed": true,
+    "message": "All models validated successfully",
+    "models_used": [
+      "grok-3-mini",
+      "qwen/qwen3-max"
+    ],
+    "standardize_names_dic": {
+      "grok-3": "grok-3",
+      "grok-3-mini": "grok-3-mini",
+      "grok-3-fast": "grok-3-fast",
+      "grok-3-vision": "grok-3-vision",
+      "grok-4": "grok-4",
+      "grok-4-vision": "grok-4-vision",
+      "grok-4-fast": "grok-4-fast",
+      "grok-beta": "grok-beta",
+      "grok-vision-beta": "grok-vision-beta",
+      "grok-2-1212": "grok-2-1212",
+      "grok-2-vision-1212": "grok-2-vision-1212",
+      "qwen/qwen3-max": "qwen3-max",
+      "qwen3-max": "qwen3-max",
+      "qwen-max": "qwen-max",
+      "qwen-plus": "qwen-plus",
+      "qwen-turbo": "qwen-turbo",
+      "qwen-2.5-72b-instruct": "qwen-2.5-72b-instruct",
+      "qwen-2.5-coder-32b-instruct": "qwen-2.5-coder-32b-instruct",
+      "qwen-2.5-32b-instruct": "qwen-2.5-32b-instruct",
+      "qwen-2.5-14b-instruct": "qwen-2.5-14b-instruct",
+      "qwen-2.5-7b-instruct": "qwen-2.5-7b-instruct",
+      "qwen-2-72b-instruct": "qwen-2-72b-instruct",
+      "qwen-2-57b-a14b-instruct": "qwen-2-57b-a14b-instruct",
+      "qwen-2-vl-72b-instruct": "qwen-2-vl-72b-instruct",
+      "deepseek-chat": "deepseek-chat",
+      "deepseek-reasoner": "deepseek-reasoner",
+      "deepseek-v3": "deepseek-v3",
+      "deepseek-coder-v2": "deepseek-coder-v2",
+      "deepseek-r1": "deepseek-r1",
+      "deepseek-vl": "deepseek-vl"
+    },
+    "model_price_dic": {
+      "grok-3": {
+        "input": 5,
+        "output": 15
+      },
+      "grok-3-mini": {
+        "input": 1,
+        "output": 3
+      },
+      "grok-3-fast": {
+        "input": 6,
+        "output": 18
+      },
+      "grok-3-vision": {
+        "input": 6,
+        "output": 18
+      },
+      "grok-4": {
+        "input": 10,
+        "output": 30
+      },
+      "grok-4-vision": {
+        "input": 12,
+        "output": 36
+      },
+      "grok-4-fast": {
+        "input": 12,
+        "output": 36
+      },
+      "grok-beta": {
+        "input": 5,
+        "output": 15
+      },
+      "grok-vision-beta": {
+        "input": 6,
+        "output": 18
+      },
+      "grok-2-1212": {
+        "input": 2,
+        "output": 6
+      },
+      "grok-2-vision-1212": {
+        "input": 2.5,
+        "output": 7.5
+      },
+      "qwen3-max": {
+        "input": 1.2,
+        "output": 6
+      },
+      "qwen/qwen3-max": {
+        "input": 1.2,
+        "output": 6
+      },
+      "qwen-max": {
+        "input": 0.12,
+        "output": 0.6
+      },
+      "qwen-plus": {
+        "input": 0.04,
+        "output": 0.2
+      },
+      "qwen-turbo": {
+        "input": 0.02,
+        "output": 0.08
+      },
+      "qwen-2.5-72b-instruct": {
+        "input": 0.1,
+        "output": 0.3
+      },
+      "qwen-2.5-coder-32b-instruct": {
+        "input": 0.08,
+        "output": 0.24
+      },
+      "qwen-2.5-32b-instruct": {
+        "input": 0.06,
+        "output": 0.18
+      },
+      "qwen-2.5-14b-instruct": {
+        "input": 0.03,
+        "output": 0.09
+      },
+      "qwen-2.5-7b-instruct": {
+        "input": 0.015,
+        "output": 0.045
+      },
+      "qwen-2-72b-instruct": {
+        "input": 0.08,
+        "output": 0.24
+      },
+      "qwen-2-vl-72b-instruct": {
+        "input": 0.12,
+        "output": 0.36
+      },
+      "deepseek-chat": {
+        "input": 0.14,
+        "output": 0.28
+      },
+      "deepseek-reasoner": {
+        "input": 0.28,
+        "output": 0.56
+      },
+      "deepseek-v3": {
+        "input": 0.2,
+        "output": 0.6
+      },
+      "deepseek-coder-v2": {
+        "input": 0.14,
+        "output": 0.28
+      },
+      "deepseek-r1": {
+        "input": 0.3,
+        "output": 0.9
+      },
+      "deepseek-vl": {
+        "input": 0.25,
+        "output": 0.75
+      }
+    },
+    "all_nodes_summary": [
+      {
+        "nodeName": "Trigger",
+        "arrayIndex": 0,
+        "startTime": 1770991612153,
+        "executionTime": 11,
+        "executionIndex": 0,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Get Key Words",
+        "arrayIndex": 0,
+        "startTime": 1770991612169,
+        "executionTime": 9,
+        "executionIndex": 1,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Get Articles",
+        "arrayIndex": 0,
+        "startTime": 1770991612179,
+        "executionTime": 1007,
+        "executionIndex": 2,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Filter Articles",
+        "arrayIndex": 0,
+        "startTime": 1770991613188,
+        "executionTime": 70,
+        "executionIndex": 3,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Get Blogs",
+        "arrayIndex": 0,
+        "startTime": 1770991613259,
+        "executionTime": 787,
+        "executionIndex": 4,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Filter Blogs",
+        "arrayIndex": 0,
+        "startTime": 1770991614048,
+        "executionTime": 60,
+        "executionIndex": 5,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "API Content",
+        "arrayIndex": 0,
+        "startTime": 1770991614110,
+        "executionTime": 32,
+        "executionIndex": 6,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Get Upcoming Launches",
+        "arrayIndex": 0,
+        "startTime": 1770991614144,
+        "executionTime": 3660,
+        "executionIndex": 7,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Filter Launch Data",
+        "arrayIndex": 0,
+        "startTime": 1770991617809,
+        "executionTime": 65,
+        "executionIndex": 8,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Prep Launch Cards",
+        "arrayIndex": 0,
+        "startTime": 1770991617875,
+        "executionTime": 40,
+        "executionIndex": 9,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Create Launch Cards",
+        "arrayIndex": 0,
+        "startTime": 1770991617916,
+        "executionTime": 2,
+        "executionIndex": 10,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Picker",
+        "arrayIndex": 0,
+        "startTime": 1770991617994,
+        "executionTime": 17452,
+        "executionIndex": 12,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Select This Weeks Articles",
+        "arrayIndex": 0,
+        "startTime": 1770991617919,
+        "executionTime": 17532,
+        "executionIndex": 11,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Parse Results",
+        "arrayIndex": 0,
+        "startTime": 1770991635452,
+        "executionTime": 44,
+        "executionIndex": 13,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check",
+        "arrayIndex": 0,
+        "startTime": 1770991635498,
+        "executionTime": 32,
+        "executionIndex": 14,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If",
+        "arrayIndex": 0,
+        "startTime": 1770991635531,
+        "executionTime": 3,
+        "executionIndex": 15,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup",
+        "arrayIndex": 0,
+        "startTime": 1770991635536,
+        "executionTime": 95,
+        "executionIndex": 16,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check1",
+        "arrayIndex": 0,
+        "startTime": 1770991635653,
+        "executionTime": 80,
+        "executionIndex": 17,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If1",
+        "arrayIndex": 0,
+        "startTime": 1770991635734,
+        "executionTime": 7,
+        "executionIndex": 18,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup1",
+        "arrayIndex": 0,
+        "startTime": 1770991635742,
+        "executionTime": 91,
+        "executionIndex": 19,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check2",
+        "arrayIndex": 0,
+        "startTime": 1770991635834,
+        "executionTime": 30,
+        "executionIndex": 20,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If2",
+        "arrayIndex": 0,
+        "startTime": 1770991635865,
+        "executionTime": 1,
+        "executionIndex": 21,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup2",
+        "arrayIndex": 0,
+        "startTime": 1770991635867,
+        "executionTime": 73,
+        "executionIndex": 22,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check3",
+        "arrayIndex": 0,
+        "startTime": 1770991635942,
+        "executionTime": 34,
+        "executionIndex": 23,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If3",
+        "arrayIndex": 0,
+        "startTime": 1770991635977,
+        "executionTime": 1,
+        "executionIndex": 24,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Scrape3",
+        "arrayIndex": 0,
+        "startTime": 1770991635979,
+        "executionTime": 23,
+        "executionIndex": 25,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup3",
+        "arrayIndex": 0,
+        "startTime": 1770991636007,
+        "executionTime": 402,
+        "executionIndex": 26,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check4",
+        "arrayIndex": 0,
+        "startTime": 1770991636413,
+        "executionTime": 124,
+        "executionIndex": 27,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If4",
+        "arrayIndex": 0,
+        "startTime": 1770991636538,
+        "executionTime": 2,
+        "executionIndex": 28,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup4",
+        "arrayIndex": 0,
+        "startTime": 1770991636553,
+        "executionTime": 78,
+        "executionIndex": 29,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check5",
+        "arrayIndex": 0,
+        "startTime": 1770991636633,
+        "executionTime": 35,
+        "executionIndex": 30,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If5",
+        "arrayIndex": 0,
+        "startTime": 1770991636685,
+        "executionTime": 2,
+        "executionIndex": 31,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup5",
+        "arrayIndex": 0,
+        "startTime": 1770991636688,
+        "executionTime": 127,
+        "executionIndex": 32,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check6",
+        "arrayIndex": 0,
+        "startTime": 1770991636816,
+        "executionTime": 36,
+        "executionIndex": 33,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If6",
+        "arrayIndex": 0,
+        "startTime": 1770991636853,
+        "executionTime": 1,
+        "executionIndex": 34,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup6",
+        "arrayIndex": 0,
+        "startTime": 1770991636855,
+        "executionTime": 49,
+        "executionIndex": 35,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check7",
+        "arrayIndex": 0,
+        "startTime": 1770991636907,
+        "executionTime": 36,
+        "executionIndex": 36,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If7",
+        "arrayIndex": 0,
+        "startTime": 1770991636944,
+        "executionTime": 2,
+        "executionIndex": 37,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup7",
+        "arrayIndex": 0,
+        "startTime": 1770991636947,
+        "executionTime": 45,
+        "executionIndex": 38,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check8",
+        "arrayIndex": 0,
+        "startTime": 1770991636993,
+        "executionTime": 44,
+        "executionIndex": 39,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If8",
+        "arrayIndex": 0,
+        "startTime": 1770991637040,
+        "executionTime": 6,
+        "executionIndex": 40,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup8",
+        "arrayIndex": 0,
+        "startTime": 1770991637048,
+        "executionTime": 46,
+        "executionIndex": 41,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check9",
+        "arrayIndex": 0,
+        "startTime": 1770991637095,
+        "executionTime": 49,
+        "executionIndex": 42,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If9",
+        "arrayIndex": 0,
+        "startTime": 1770991637145,
+        "executionTime": 2,
+        "executionIndex": 43,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Scrape9",
+        "arrayIndex": 0,
+        "startTime": 1770991637148,
+        "executionTime": 159,
+        "executionIndex": 44,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup9",
+        "arrayIndex": 0,
+        "startTime": 1770991637310,
+        "executionTime": 51,
+        "executionIndex": 45,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Merge",
+        "arrayIndex": 0,
+        "startTime": 1770991637362,
+        "executionTime": 5,
+        "executionIndex": 46,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check10",
+        "arrayIndex": 0,
+        "startTime": 1770991637398,
+        "executionTime": 101,
+        "executionIndex": 47,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If10",
+        "arrayIndex": 0,
+        "startTime": 1770991637500,
+        "executionTime": 1,
+        "executionIndex": 48,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Scrape10",
+        "arrayIndex": 0,
+        "startTime": 1770991637502,
+        "executionTime": 25,
+        "executionIndex": 49,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup10",
+        "arrayIndex": 0,
+        "startTime": 1770991637535,
+        "executionTime": 95,
+        "executionIndex": 50,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check11",
+        "arrayIndex": 0,
+        "startTime": 1770991637634,
+        "executionTime": 62,
+        "executionIndex": 51,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If11",
+        "arrayIndex": 0,
+        "startTime": 1770991637697,
+        "executionTime": 1,
+        "executionIndex": 52,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Scrape11",
+        "arrayIndex": 0,
+        "startTime": 1770991637699,
+        "executionTime": 23,
+        "executionIndex": 53,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup11",
+        "arrayIndex": 0,
+        "startTime": 1770991637727,
+        "executionTime": 87,
+        "executionIndex": 54,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check12",
+        "arrayIndex": 0,
+        "startTime": 1770991637817,
+        "executionTime": 51,
+        "executionIndex": 55,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If12",
+        "arrayIndex": 0,
+        "startTime": 1770991637869,
+        "executionTime": 20,
+        "executionIndex": 56,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Scrape12",
+        "arrayIndex": 0,
+        "startTime": 1770991637897,
+        "executionTime": 60,
+        "executionIndex": 57,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup12",
+        "arrayIndex": 0,
+        "startTime": 1770991637961,
+        "executionTime": 67,
+        "executionIndex": 58,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check13",
+        "arrayIndex": 0,
+        "startTime": 1770991638029,
+        "executionTime": 60,
+        "executionIndex": 59,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If13",
+        "arrayIndex": 0,
+        "startTime": 1770991638109,
+        "executionTime": 2,
+        "executionIndex": 60,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup13",
+        "arrayIndex": 0,
+        "startTime": 1770991638117,
+        "executionTime": 114,
+        "executionIndex": 61,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check14",
+        "arrayIndex": 0,
+        "startTime": 1770991638233,
+        "executionTime": 65,
+        "executionIndex": 62,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If14",
+        "arrayIndex": 0,
+        "startTime": 1770991638305,
+        "executionTime": 2,
+        "executionIndex": 63,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup14",
+        "arrayIndex": 0,
+        "startTime": 1770991638307,
+        "executionTime": 126,
+        "executionIndex": 64,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Scraper Check15",
+        "arrayIndex": 0,
+        "startTime": 1770991638437,
+        "executionTime": 75,
+        "executionIndex": 65,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "If15",
+        "arrayIndex": 0,
+        "startTime": 1770991638513,
+        "executionTime": 1,
+        "executionIndex": 66,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Cleanup15",
+        "arrayIndex": 0,
+        "startTime": 1770991638515,
+        "executionTime": 71,
+        "executionIndex": 67,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Merge2",
+        "arrayIndex": 0,
+        "startTime": 1770991638587,
+        "executionTime": 1,
+        "executionIndex": 68,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Merge3",
+        "arrayIndex": 0,
+        "startTime": 1770991638591,
+        "executionTime": 1,
+        "executionIndex": 69,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Article Final Prep",
+        "arrayIndex": 0,
+        "startTime": 1770991638594,
+        "executionTime": 119,
+        "executionIndex": 70,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "NASA X Feed",
+        "arrayIndex": 0,
+        "startTime": 1770991638714,
+        "executionTime": 2361,
+        "executionIndex": 71,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "NASA X Feed",
+        "arrayIndex": 1,
+        "startTime": 1770991641215,
+        "executionTime": 1580,
+        "executionIndex": 74,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "NASA X Feed",
+        "arrayIndex": 2,
+        "startTime": 1770991642946,
+        "executionTime": 1896,
+        "executionIndex": 77,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Has Next Page Initially?",
+        "arrayIndex": 0,
+        "startTime": 1770991641083,
+        "executionTime": 4,
+        "executionIndex": 72,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Has Next Page Initially?",
+        "arrayIndex": 1,
+        "startTime": 1770991642797,
+        "executionTime": 1,
+        "executionIndex": 75,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Has Next Page Initially?",
+        "arrayIndex": 2,
+        "startTime": 1770991644843,
+        "executionTime": 2,
+        "executionIndex": 78,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Set Next Cursor and Accumulate",
+        "arrayIndex": 0,
+        "startTime": 1770991641099,
+        "executionTime": 106,
+        "executionIndex": 73,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Set Next Cursor and Accumulate",
+        "arrayIndex": 1,
+        "startTime": 1770991642800,
+        "executionTime": 103,
+        "executionIndex": 76,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Output All Tweets",
+        "arrayIndex": 0,
+        "startTime": 1770991644846,
+        "executionTime": 143,
+        "executionIndex": 79,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Complete X Feed Markdown Conversion",
+        "arrayIndex": 0,
+        "startTime": 1770991645026,
+        "executionTime": 556,
+        "executionIndex": 80,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "NASAJPL X Feed",
+        "arrayIndex": 0,
+        "startTime": 1770991645583,
+        "executionTime": 845,
+        "executionIndex": 81,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "NASAJPL X Feed",
+        "arrayIndex": 1,
+        "startTime": 1770991646492,
+        "executionTime": 1744,
+        "executionIndex": 84,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Has Next Page Initially?1",
+        "arrayIndex": 0,
+        "startTime": 1770991646429,
+        "executionTime": 2,
+        "executionIndex": 82,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Has Next Page Initially?1",
+        "arrayIndex": 1,
+        "startTime": 1770991648237,
+        "executionTime": 1,
+        "executionIndex": 85,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Set Next Cursor and Accumulate1",
+        "arrayIndex": 0,
+        "startTime": 1770991646432,
+        "executionTime": 59,
+        "executionIndex": 83,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Output All Tweets1",
+        "arrayIndex": 0,
+        "startTime": 1770991648239,
+        "executionTime": 57,
+        "executionIndex": 86,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Complete X Feed Markdown Conversion1",
+        "arrayIndex": 0,
+        "startTime": 1770991648297,
+        "executionTime": 145,
+        "executionIndex": 87,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "NASAMars X Feed",
+        "arrayIndex": 0,
+        "startTime": 1770991648442,
+        "executionTime": 3737,
+        "executionIndex": 88,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "NASAMars X Feed",
+        "arrayIndex": 1,
+        "startTime": 1770991652262,
+        "executionTime": 912,
+        "executionIndex": 91,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Has Next Page Initially?2",
+        "arrayIndex": 0,
+        "startTime": 1770991652183,
+        "executionTime": 1,
+        "executionIndex": 89,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Has Next Page Initially?2",
+        "arrayIndex": 1,
+        "startTime": 1770991653175,
+        "executionTime": 1,
+        "executionIndex": 92,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Set Next Cursor and Accumulate2",
+        "arrayIndex": 0,
+        "startTime": 1770991652187,
+        "executionTime": 71,
+        "executionIndex": 90,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Output All Tweets2",
+        "arrayIndex": 0,
+        "startTime": 1770991653177,
+        "executionTime": 71,
+        "executionIndex": 93,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Complete X Feed Markdown Conversion2",
+        "arrayIndex": 0,
+        "startTime": 1770991653252,
+        "executionTime": 106,
+        "executionIndex": 94,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "NASAArtemis X Feed",
+        "arrayIndex": 0,
+        "startTime": 1770991653359,
+        "executionTime": 1443,
+        "executionIndex": 95,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "NASAArtemis X Feed",
+        "arrayIndex": 1,
+        "startTime": 1770991654889,
+        "executionTime": 1724,
+        "executionIndex": 98,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Has Next Page Initially?3",
+        "arrayIndex": 0,
+        "startTime": 1770991654806,
+        "executionTime": 2,
+        "executionIndex": 96,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Has Next Page Initially?3",
+        "arrayIndex": 1,
+        "startTime": 1770991656614,
+        "executionTime": 1,
+        "executionIndex": 99,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Set Next Cursor and Accumulate3",
+        "arrayIndex": 0,
+        "startTime": 1770991654811,
+        "executionTime": 75,
+        "executionIndex": 97,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Output All Tweets3",
+        "arrayIndex": 0,
+        "startTime": 1770991656616,
+        "executionTime": 63,
+        "executionIndex": 100,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Complete X Feed Markdown Conversion3",
+        "arrayIndex": 0,
+        "startTime": 1770991656682,
+        "executionTime": 108,
+        "executionIndex": 101,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "NASAAdminX Feed",
+        "arrayIndex": 0,
+        "startTime": 1770991656791,
+        "executionTime": 2409,
+        "executionIndex": 102,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "NASAAdminX Feed",
+        "arrayIndex": 1,
+        "startTime": 1770991659289,
+        "executionTime": 1595,
+        "executionIndex": 105,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Has Next Page Initially?4",
+        "arrayIndex": 0,
+        "startTime": 1770991659207,
+        "executionTime": 2,
+        "executionIndex": 103,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Has Next Page Initially?4",
+        "arrayIndex": 1,
+        "startTime": 1770991660884,
+        "executionTime": 4,
+        "executionIndex": 106,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Set Next Cursor and Accumulate4",
+        "arrayIndex": 0,
+        "startTime": 1770991659212,
+        "executionTime": 73,
+        "executionIndex": 104,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Output All Tweets4",
+        "arrayIndex": 0,
+        "startTime": 1770991660888,
+        "executionTime": 62,
+        "executionIndex": 107,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Complete X Feed Markdown Conversion4",
+        "arrayIndex": 0,
+        "startTime": 1770991660951,
+        "executionTime": 112,
+        "executionIndex": 108,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Space_Station X Feed",
+        "arrayIndex": 0,
+        "startTime": 1770991661064,
+        "executionTime": 3364,
+        "executionIndex": 109,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Space_Station X Feed",
+        "arrayIndex": 1,
+        "startTime": 1770991664500,
+        "executionTime": 1365,
+        "executionIndex": 112,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Has Next Page Initially?5",
+        "arrayIndex": 0,
+        "startTime": 1770991664428,
+        "executionTime": 2,
+        "executionIndex": 110,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Has Next Page Initially?5",
+        "arrayIndex": 1,
+        "startTime": 1770991665869,
+        "executionTime": 2,
+        "executionIndex": 113,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Set Next Cursor and Accumulate5",
+        "arrayIndex": 0,
+        "startTime": 1770991664430,
+        "executionTime": 70,
+        "executionIndex": 111,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Output All Tweets5",
+        "arrayIndex": 0,
+        "startTime": 1770991665872,
+        "executionTime": 75,
+        "executionIndex": 114,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Complete X Feed Markdown Conversion5",
+        "arrayIndex": 0,
+        "startTime": 1770991665948,
+        "executionTime": 118,
+        "executionIndex": 115,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Merge1",
+        "arrayIndex": 0,
+        "startTime": 1770991666066,
+        "executionTime": 2,
+        "executionIndex": 116,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "X Feed Final Prep",
+        "arrayIndex": 0,
+        "startTime": 1770991666068,
+        "executionTime": 90,
+        "executionIndex": 117,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Get Events",
+        "arrayIndex": 0,
+        "startTime": 1770991666158,
+        "executionTime": 1296,
+        "executionIndex": 118,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Event Final Prep",
+        "arrayIndex": 0,
+        "startTime": 1770991667454,
+        "executionTime": 325,
+        "executionIndex": 119,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Get Past News Content",
+        "arrayIndex": 0,
+        "startTime": 1770991667779,
+        "executionTime": 15,
+        "executionIndex": 120,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Filter Past News Content",
+        "arrayIndex": 0,
+        "startTime": 1770991667795,
+        "executionTime": 708,
+        "executionIndex": 121,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "News Author",
+        "arrayIndex": 0,
+        "startTime": 1770991668772,
+        "executionTime": 62260,
+        "executionIndex": 123,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Write This Weeks News",
+        "arrayIndex": 0,
+        "startTime": 1770991668503,
+        "executionTime": 62534,
+        "executionIndex": 122,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Save News Content",
+        "arrayIndex": 0,
+        "startTime": 1770991731038,
+        "executionTime": 78,
+        "executionIndex": 124,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Amazon Affiliate Products",
+        "arrayIndex": 0,
+        "startTime": 1770991731118,
+        "executionTime": 11,
+        "executionIndex": 125,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Inject Amazon Affiliate Links",
+        "arrayIndex": 0,
+        "startTime": 1770991731131,
+        "executionTime": 172,
+        "executionIndex": 126,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Create Blog Title",
+        "arrayIndex": 0,
+        "startTime": 1770991731304,
+        "executionTime": 163,
+        "executionIndex": 127,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Create Post",
+        "arrayIndex": 0,
+        "startTime": 1770991731467,
+        "executionTime": 20,
+        "executionIndex": 128,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Send Post",
+        "arrayIndex": 0,
+        "startTime": 1770991731488,
+        "executionTime": 1199,
+        "executionIndex": 129,
+        "executionStatus": "success"
+      },
+      {
+        "nodeName": "Count AI Tokens",
+        "arrayIndex": 0,
+        "startTime": 1770991732690,
+        "executionTime": 526,
+        "executionIndex": 130,
+        "executionStatus": "error"
+      }
+    ],
+    "llm_run_data": {
+      "llm_Article Picker_0_0_0": {
+        "response": {
+          "generations": [
+            [
+              {
+                "text": "<topic01>\nTitle: NASA Selects Vast for Sixth Private Mission to Space Station\nURL: https://www.nasa.gov/news-release/nasa-selects-vast-for-sixth-private-mission-to-space-station/\n</topic01>\n\n<topic02>\nTitle: NASA Moon Mission Spacesuit Nears Milestone\nURL: https://www.nasa.gov/humans-in-space/nasa-moon-mission-spacesuit-nears-milestone/\n</topic02>\n\n<topic03>\nTitle: NASA loading liquid hydrogen aboard Artemis 2 rocket in unannounced test\nURL: https://spaceflightnow.com/2026/02/12/nasa-loading-liquid-hydrogen-aboard-artemis-2-rocket-in-unannounced-test/\n</topic03>\n\n<topic04>\nTitle: NASA Completes First Flight of Laminar Flow Scaled Wing Design\nURL: https://www.nasa.gov/image-article/nasa-completes-first-flight-of-laminar-flow-scaled-wing-design/\n</topic04>\n\n<topic05>\nTitle: NASA’s Hubble Captures Light Show Around Rapidly Dying Star\nURL: https://science.nasa.gov/missions/hubble/nasas-hubble-captures-light-show-around-rapidly-dying-star/\n</topic05>",
+                "generationInfo": {
+                  "finish_reason": "stop"
+                }
+              }
+            ]
+          ]
+        },
+        "tokenUsage": {
+          "completionTokens": 250,
+          "promptTokens": 4161,
+          "totalTokens": 4411
+        },
+        "messages": [
+          "Human: You are analyzing space news content to identify the most interesting stories for readers.\n\n## Your Task\nReview the provided articles, reports, blogs, and events. Select the 5 most interesting and newsworthy topics based on:\n- Setbacks (mission failures, explosions, delays to major projects)\n- Significance of the news (major milestones, launches, discoveries)\n- Timeliness and relevance\n- Unique or unexpected developments\n- Broad reader appeal\n- Canadian connections (if present, though not required)\n\n## Critical Selection Rules\n- **DIVERSITY REQUIRED**: Each of your 5 selections must cover a DIFFERENT story/event/topic\n- Do NOT select multiple articles about the same launch, mission, or event\n- If multiple articles cover the same story, choose only the BEST one (most detailed, most recent, or from most authoritative source)\n- Aim for variety across different companies, missions, and types of news\n- Example of what NOT to do: selecting 3 different articles all about the same Starship launch\n- Example of what TO do: selecting articles about 5 completely different topics (e.g., a Starship test, an Artemis update, a satellite deployment, a scientific discovery, and a commercial space announcement)\n\n## Source Material\n### This week’s Articles\n\n#### 1. [NASA’s SpaceX Crew-12 Launches to International Space Station](https://www.nasa.gov/news-release/nasas-spacex-crew-12-launches-to-international-space-station/)\n\n![](https://www.nasa.gov/wp-content/uploads/2026/02/nasa-spacex-crew-12-launch-2.png)\n\nFour crew members of NASA’s SpaceX Crew-12 mission launched at 5:15 a.m. EST Friday from Space Launch Complex 40 at Cape Canaveral Space Force Station in Florida for a science expedition aboard the International Space Station. A SpaceX Falcon 9 rocket propelled a Dragon spacecraft into orbit carrying NASA astronauts Jessica Meir and Jack Hathaway, […]\n\n**Source:** [Read Full Article](https://www.nasa.gov/news-release/nasas-spacex-crew-12-launches-to-international-space-station/)\n\n---\n\n#### 2. [NASA Stennis proves water systems ready for Artemis IV upper stage trials](https://www.spacedaily.com/reports/NASA_Stennis_proves_water_systems_ready_for_Artemis_IV_upper_stage_trials_999.html)\n\n![](https://www.spxdaily.com/images-bg/stennis-water-system-activation-cochran-artemis-iv-exploration-upper-stage-bg.jpg)\n\nLos Angeles CA (SPX) Feb 13, 2026\r\n\r\n\r\nA major water system activation at the Thad Cochran Test Stand (B-2) has moved NASA Stennis Space Center a step closer to Green Run testing of the exploration upper stage for the Artemis IV mission. The Jan. 30 activation exercised new cooling hardware and pushed the site's high pressure industrial water network to full capacity in preparation for operating the more powerful upper stage. \r\n\r\nT\n\n**Source:** [Read Full Article](https://www.spacedaily.com/reports/NASA_Stennis_proves_water_systems_ready_for_Artemis_IV_upper_stage_trials_999.html)\n\n---\n\n#### 3. [NASA, SpaceX set for launch of Crew-12 to ISS](https://www.nasaspaceflight.com/2026/02/crew-12-launch/)\n\n![](https://www.nasaspaceflight.com/wp-content/uploads/2026/02/tylerfalcondragon-scaled.jpg)\n\nSpaceX and NASA are set for the launch of the 12th operational crew rotation mission…\r\nThe post NASA, SpaceX set for launch of Crew-12 to ISS appeared first on NASASpaceFlight.com.\n\n**Source:** [Read Full Article](https://www.nasaspaceflight.com/2026/02/crew-12-launch/)\n\n---\n\n#### 4. [NASA Selects Vast for Sixth Private Mission to Space Station](https://www.nasa.gov/news-release/nasa-selects-vast-for-sixth-private-mission-to-space-station/)\n\n![](https://www.nasa.gov/wp-content/uploads/2024/08/meatball-w-black-background.webp)\n\nNASA and Vast have signed an order for the sixth private astronaut mission to the International Space Station, targeted to launch no earlier than summer 2027 from Florida. This private astronaut mission marks the company’s first selection to the orbiting laboratory, underscoring NASA’s ongoing investment in fostering a commercial space economy and expanding opportunities for […]\n\n**Source:** [Read Full Article](https://www.nasa.gov/news-release/nasa-selects-vast-for-sixth-private-mission-to-space-station/)\n\n---\n\n#### 5. [NASA Moon Mission Spacesuit Nears Milestone](https://www.nasa.gov/humans-in-space/nasa-moon-mission-spacesuit-nears-milestone/)\n\n![](https://www.nasa.gov/wp-content/uploads/2026/02/jsc2026e002578.jpg)\n\nThe next-generation spacesuit for NASA’s Artemis III mission continues to advance by passing a contractor-led technical review, as the agency prepares to send humans to the Moon’s South Pole for the first time. Testing is also underway for the new suits, built by Axiom Space, with NASA astronauts and spacesuit engineers recently simulating surface operations and tasks […]\n\n**Source:** [Read Full Article](https://www.nasa.gov/humans-in-space/nasa-moon-mission-spacesuit-nears-milestone/)\n\n---\n\n#### 6. [NASA loading liquid hydrogen aboard Artemis 2 rocket in unannounced test](https://spaceflightnow.com/2026/02/12/nasa-loading-liquid-hydrogen-aboard-artemis-2-rocket-in-unannounced-test/)\n\n![](http://spaceflightnow.com/wp-content/uploads/2026/02/20260212-SLS-Lower-Michael.jpg)\n\nNASA is loading liquid hydrogen aboard its Space Launch System moon rocket at the Kennedy Space Center on Thursday for an unpublicized but crucial test of the repairs made to a leaky umbilical that derailed a countdown rehearsal on Feb. 2.\n\n**Source:** [Read Full Article](https://spaceflightnow.com/2026/02/12/nasa-loading-liquid-hydrogen-aboard-artemis-2-rocket-in-unannounced-test/)\n\n---\n\n#### 7. [NASA Completes First Flight of Laminar Flow Scaled Wing Design](https://www.nasa.gov/image-article/nasa-completes-first-flight-of-laminar-flow-scaled-wing-design/)\n\n![](https://www.nasa.gov/wp-content/uploads/2026/02/afrc2026-0018-051.jpg)\n\nNASA completed the first flight test of a scale-model wing designed to improve laminar flow, reducing drag and lowering fuel costs for future commercial aircraft.  The flight took place Jan. 29 at NASA’s Armstrong Flight Research Center in Edwards, California, using one of the agency’s F-15B research jets. The NASA-designed, 40-inch Crossflow Attenuated Natural Laminar Flow (CATNLF) wing model was attached to the aircraft’s underside vertically, like a fin.  The flight lasted about 75 minutes, during […]\n\n**Source:** [Read Full Article](https://www.nasa.gov/image-article/nasa-completes-first-flight-of-laminar-flow-scaled-wing-design/)\n\n---\n\n#### 8. [Motiv Space Systems and PickNik Robotics Collaborate on Software for NASA’s Fly Foundational Robotics (FFR) Mission](https://spacenews.com/motiv-space-systems-and-picknik-robotics-collaborate-on-software-for-nasas-fly-foundational-robotics-ffr-mission/)\n\n![](https://i0.wp.com/spacenews.com/wp-content/uploads/2026/02/picknik-robotics.png?fit=420%2C420&ssl=1)\n\n\nBoulder, CO and Pasadena, CA — February 11, 2026 — Motiv Space Systems announced a contractual agreement with PickNik Robotics to support software development for NASA’s Fly Foundational Robotics (FFR) […]\nThe post Motiv Space Systems and PickNik Robotics Collaborate on Software for NASA’s Fly Foundational Robotics (FFR) Mission appeared first on SpaceNews.\n\n**Source:** [Read Full Article](https://spacenews.com/motiv-space-systems-and-picknik-robotics-collaborate-on-software-for-nasas-fly-foundational-robotics-ffr-mission/)\n\n---\n\n#### 9. [NASA Marks Milestone in Preparation for Artemis IV Testing](https://www.nasa.gov/centers-and-facilities/stennis/preparation-for-artemis-iv-testing/)\n\n![](https://www.nasa.gov/wp-content/uploads/2026/02/2-dsc-3215.jpg)\n\nWater flowing out. Data flowing in. A water system activation at the Thad Cochran Test Stand (B-2) on Jan. 30 at NASA’s Stennis Space Center near Bay St. Louis, Mississippi, helped capture critical data to support testing a new SLS (Space Launch System) stage expected to fly on the Artemis IV mission. The activation milestone […]\n\n**Source:** [Read Full Article](https://www.nasa.gov/centers-and-facilities/stennis/preparation-for-artemis-iv-testing/)\n\n---\n\n#### 10. [NASA’s Hubble Captures Light Show Around Rapidly Dying Star](https://science.nasa.gov/missions/hubble/nasas-hubble-captures-light-show-around-rapidly-dying-star/)\n\n![](https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2026/02/STScI-01KAEVP71560HQNPJMT2ZC0GA6.jpg)\n\nThis stunning image from NASA’s Hubble Space Telescope reveals a dramatic interplay of light and shadow in the Egg Nebula, sculpted by freshly ejected stardust. Located approximately 1,000 light-years away in the constellation Cygnus, the Egg Nebula features a central star obscured by a dense cloud of dust — like a “yolk” nestled within a […]\n\n**Source:** [Read Full Article](https://science.nasa.gov/missions/hubble/nasas-hubble-captures-light-show-around-rapidly-dying-star/)\n\n---\n\n\n\n### This week’s Blogs\n\n#### 1. [NASA’s SpaceX Crew-12 Reaches Orbit, News Conference at 6:45 a.m. EST](https://www.nasa.gov/blogs/spacestation/2026/02/13/nasas-spacex-crew-12-reaches-orbit-news-conference-at-645-a-m-est/)\n\n![](https://www.nasa.gov/wp-content/uploads/2026/02/nasas-spacex-crew-12-launch.jpg)\n\nNASA astronauts Jessica Meir and Jack Hathaway, ESA (European Space Agency) astronaut Sophie Adenot, and Roscosmos cosmonaut Andrey Fedyaev, and their SpaceX Dragon spacecraft have reached orbit, and the nosecone has opened.  The crew will spend roughly the next 34 hours to rendezvous and dock with the International Space Station.   A postlaunch news conference will […]\n\n**Source:** [Read Full Blog](https://www.nasa.gov/blogs/spacestation/2026/02/13/nasas-spacex-crew-12-reaches-orbit-news-conference-at-645-a-m-est/)\n\n---\n\n#### 2. [NASA’s SpaceX Crew-12 Spacecraft Flying Solo](https://www.nasa.gov/blogs/commercialcrew/2026/02/13/nasas-spacex-crew-12-spacecraft-flying-solo/)\n\n![](https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2023/01/nasa-logo-web-rgb.png)\n\nAt 5:24 a.m. EST, The Dragon spacecraft separated from the Falcon 9’s second stage and began flying on its own. The spacecraft is traveling at approximately 17,500 miles per hour (28,200 kilometers per hour). In less than a minute, the Dragon crew spacecraft nosecone open sequence will begin. The spacecraft now is in orbit and […]\n\n**Source:** [Read Full Blog](https://www.nasa.gov/blogs/commercialcrew/2026/02/13/nasas-spacex-crew-12-spacecraft-flying-solo/)\n\n---\n\n#### 3. [NASA’s SpaceX Crew-12 Spacecraft Flying Solo](https://www.nasa.gov/blogs/spacestation/2026/02/13/nasas-spacex-crew-12-spacecraft-flying-solo/)\n\n![](https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2023/01/nasa-logo-web-rgb.png)\n\nAt 5:24 a.m. EST, The Dragon spacecraft separated from the Falcon 9’s second stage and began flying on its own. The spacecraft is traveling at approximately 17,500 miles per hour (28,200 kilometers per hour). In less than a minute, the Dragon crew spacecraft nosecone open sequence will begin. The spacecraft now is in orbit and […]\n\n**Source:** [Read Full Blog](https://www.nasa.gov/blogs/spacestation/2026/02/13/nasas-spacex-crew-12-spacecraft-flying-solo/)\n\n---\n\n#### 4. [NASA’s SpaceX Crew-12 Spacecraft Flying Solo](https://www.nasa.gov/blogs/commercialcrew/2026/02/13/crew-12-falcon-9-first-stage-returns/)\n\n![](https://www.nasa.gov/wp-content/uploads/2026/02/spacex-returns-to-pad-40.png)\n\nThe first stage of the SpaceX Falcon 9 rocket has completed its descent and landed inside the Space Launch Complex 40 perimeter at Cape Canaveral Space Force Station in Florida. As previously mentioned, this marks the first time SpaceX has launched and landed a booster from the same launch complex in Florida. On Jan. 30, […]\n\n**Source:** [Read Full Blog](https://www.nasa.gov/blogs/commercialcrew/2026/02/13/crew-12-falcon-9-first-stage-returns/)\n\n---\n\n#### 5. [NASA’s SpaceX Crew-12 Launches](https://www.nasa.gov/blogs/commercialcrew/2026/02/13/nasas-spacex-crew-12-launches/)\n\n![](https://www.nasa.gov/wp-content/uploads/2026/02/crew-12-liftoff.png)\n\nNASA’s SpaceX Crew-12 mission lifted off at 5:15 a.m. EST from Space Launch Complex 40 at the Cape Canaveral Space Force Station in Florida. NASA astronauts Jessica Meir and Jack Hathaway, ESA (European Space Agency) astronaut Sophie Adenot, and Roscosmos cosmonaut Andrey Fedyaev, are experiencing 2 g as SpaceX’s Dragon spacecraft and Falcon 9 rocket go through a rapid […]\n\n**Source:** [Read Full Blog](https://www.nasa.gov/blogs/commercialcrew/2026/02/13/nasas-spacex-crew-12-launches/)\n\n---\n\n#### 6. [NASA’s SpaceX Crew-12 Launches](https://www.nasa.gov/blogs/spacestation/2026/02/13/nasas-spacex-crew-12-launches/)\n\n![](https://www.nasa.gov/wp-content/uploads/2026/02/crew-12-liftoff.png)\n\nNASA’s SpaceX Crew-12 mission lifted off at 5:15 a.m. EST from Space Launch Complex 40 at the Cape Canaveral Space Force Station in Florida. NASA astronauts Jessica Meir and Jack Hathaway, ESA (European Space Agency) astronaut Sophie Adenot, and Roscosmos cosmonaut Andrey Fedyaev, are experiencing 2 g as SpaceX’s Dragon spacecraft and Falcon 9 rocket go through a […]\n\n**Source:** [Read Full Blog](https://www.nasa.gov/blogs/spacestation/2026/02/13/nasas-spacex-crew-12-launches/)\n\n---\n\n#### 7. [NASA+ Coverage Begins of NASA’s SpaceX Crew-12 Mission](https://www.nasa.gov/blogs/commercialcrew/2026/02/13/nasa-coverage-begins-of-nasas-spacex-crew-12-mission/)\n\n![](https://www.nasa.gov/wp-content/uploads/2026/02/crew-12-rocket-at-the-pad.png)\n\nNASA just expanded its coverage of this morning’s launch, and the live broadcast of the agency’s SpaceX Crew-12 mission is airing live on NASA+, Amazon Prime, and the agency’s YouTube channel. Learn how to watch NASA content through a variety of online platforms, including social media. Today’s liftoff is targeted for 5:15 a.m. EST from Space Launch Complex 40 […]\n\n**Source:** [Read Full Blog](https://www.nasa.gov/blogs/commercialcrew/2026/02/13/nasa-coverage-begins-of-nasas-spacex-crew-12-mission/)\n\n---\n\n#### 8. [NASA’s SpaceX Crew-12 Science Objectives](https://www.nasa.gov/blogs/commercialcrew/2026/02/13/nasas-spacex-crew-12-science-objectives/)\n\n![](https://images-assets.nasa.gov/image/jsc2026e004235/jsc2026e004235~orig.jpg)\n\nDuring Crew-12’s eight-month long mission aboard the International Space Station, the crew will conduct a variety of science experiments aimed at advancing research and technology for missions to the Moon and Mars, and to benefit humanity on Earth. The crew will study how pneumonia-causing bacteria can lead to long-term heart damage, research on how physical […]\n\n**Source:** [Read Full Blog](https://www.nasa.gov/blogs/commercialcrew/2026/02/13/nasas-spacex-crew-12-science-objectives/)\n\n---\n\n#### 9. [NASA’s SpaceX Crew-12 Secured in Spacecraft](https://www.nasa.gov/blogs/spacestation/2026/02/13/nasas-spacex-crew-12-secured-in-spacecraft/)\n\n![](https://www.nasa.gov/wp-content/uploads/2026/02/crew-12-inside-spacecraft.png)\n\nNASA astronauts Jessica Meir, commander, and Jack Hathaway, pilot, along with mission specialists ESA (European Space Agency) astronaut Sophie Adenot and Roscosmos cosmonaut Andrey Fedyaev, boarded their SpaceX Dragon spacecraft. Over the next 45 minutes, the crew will conduct communication checks with mission control, inspect their spacesuits for any leaks, and rotate their seats into […]\n\n**Source:** [Read Full Blog](https://www.nasa.gov/blogs/spacestation/2026/02/13/nasas-spacex-crew-12-secured-in-spacecraft/)\n\n---\n\n#### 10. [NASA’s SpaceX Crew-12 Secured in Spacecraft](https://www.nasa.gov/blogs/commercialcrew/2026/02/13/nasas-spacex-crew-12-secured-in-spacecraft/)\n\n![](https://www.nasa.gov/wp-content/uploads/2026/02/spacecraft-.png)\n\nNASA astronauts Jessica Meir, commander, and Jack Hathaway, pilot, along with mission specialists ESA (European Space Agency) astronaut Sophie Adenot and Roscosmos cosmonaut Andrey Fedyaev, boarded their SpaceX Dragon spacecraft. Over the next 45 minutes, the crew will conduct communication checks with mission control, inspect their spacesuits for any leaks, and rotate their seats into […]\n\n**Source:** [Read Full Blog](https://www.nasa.gov/blogs/commercialcrew/2026/02/13/nasas-spacex-crew-12-secured-in-spacecraft/)\n\n---\n\n## Output Format\nReturn ONLY the XML tags with article titles and URLs. No preamble, no explanations, no additional text.\n\nFormat each topic exactly as shown:\n<topic01>\nTitle: [Exact article title]\nURL: [Full article URL]\n</topic01>\n\n<topic02>\nTitle: [Exact article title]\nURL: [Full article URL]\n</topic02>\n\n<topic03>\nTitle: [Exact article title]\nURL: [Full article URL]\n</topic03>\n\n<topic04>\nTitle: [Exact article title]\nURL: [Full article URL]\n</topic04>\n\n<topic05>\nTitle: [Exact article title]\nURL: [Full article URL]\n</topic05>\n\nBegin selecting the 5 most interesting and DIVERSE topics now."
+        ],
+        "estimatedTokens": 4383,
+        "options": {
+          "openai_api_key": {
+            "lc": 1,
+            "type": "secret",
+            "id": [
+              "OPENAI_API_KEY"
+            ]
+          },
+          "model": "grok-3-mini",
+          "timeout": 60000,
+          "max_retries": 2,
+          "configuration": {
+            "baseURL": "https://api.x.ai/v1",
+            "fetchOptions": {}
+          },
+          "model_kwargs": {}
+        },
+        "tokenUsage_cost": {
+          "input_cost": 0.004161,
+          "output_cost": 0.00075,
+          "total_cost": 0.004911
+        }
+      },
+      "llm_News Author_0_0_0": {
+        "response": {
+          "generations": [
+            [
+              {
+                "text": "<h1>Wings, Crews, and Commercial Partners: NASA’s February Momentum</h1>\n\n<h2>The Artemis Report</h2>\n<p>Artemis II, NASA’s highly anticipated crewed mission around the Moon, remains on track for a March 2026 launch window—but not without some fine-tuning along the way. Following a wet dress rehearsal test in early February, engineers identified and replaced seals in a section where a hydrogen leak appeared. Teams have since completed additional cryogenic and pressure tests to verify system integrity ahead of launch, according to NASA Artemis social media updates on February 12.</p>\n<p>While a precise launch date has yet to be confirmed, NASA has indicated that March offers the next viable opportunity, pending successful data reviews from upcoming rehearsals. The mission will carry four astronauts on a 10-day journey that loops around the Moon without landing—a crucial dress rehearsal for eventual Artemis III lunar surface operations.</p>\n<p>Interestingly, Canadian eyes should stay peeled during Artemis II, even if our country isn’t flying a crew member this time. Technology tested aboard the International Space Station—including imaging systems and environmental monitoring tools—has been adapted for use during the lunar flyby, as noted in a February 9 tweet from the International Space Station account. These systems help map the lunar surface and monitor crew health in deep space, laying groundwork for international contributions to future Artemis missions.</p>\n<p>The SLS rocket, standing 322 feet tall (just shy of a football field’s length), continues to undergo final checks at Kennedy Space Center’s Pad 39B. NASA Administrator Jared Isaacman, who recently flew over both Pad 39B (Artemis II) and Pad 40 (Crew-12) in an F-5 fighter jet, called the dual-rocket sight \"an honor\"—a visual reminder of NASA’s bustling launch manifest.</p>\n<img src=\"https://pbs.twimg.com/media/HA9uAYPbUAABZz1.jpg\" alt=\"Artemis II rocket undergoing tests at Kennedy Space Center\" style=\"display:block; margin:0 auto;\">\n<img src=\"https://pbs.twimg.com/media/HAvxLuqWQAE_Wjs.jpg\" alt=\"Artemis II astronauts debriefing after wet dress rehearsal\" style=\"display:block; margin:0 auto;\">\n\n<h2>Flight Innovation Takes Shape Over California</h2>\n<p>While much of the public’s attention fixates on rockets, NASA’s aeronautics division quietly achieved a milestone that could reshape commercial aviation. On January 29, 2026, NASA’s Armstrong Flight Research Center in Edwards, California, successfully completed the first flight of a scaled wing designed to enhance laminar flow—smooth airflow over aircraft surfaces that reduces drag and fuel consumption.</p>\n<p>The 40-inch Crossflow Attenuated Natural Laminar Flow (CATNLF) wing was mounted vertically beneath an F-15B research jet and flown for 75 minutes. During the test, pilots executed gentle turns, steady holds, and pitch changes between 20,000 and 34,000 feet. Early data, including thermal imaging from an onboard infrared camera, confirmed that airflow closely matched pre-flight computer models—a promising sign for future efficiency gains.</p>\n<p>Michelle Banchy, the research principal investigator, called the flight “incredible” after years of wind tunnel tests, ground evaluations, and high-speed taxi trials. The mission is part of NASA’s broader Subsonic Vehicle Technologies and Tools project, with up to 14 additional test flights planned to gather comprehensive data across varying conditions.</p>\n<p>For Canadian travellers and airlines, this research could eventually mean cheaper, quieter, and more fuel-efficient transcontinental flights. While no Canadian institutions are directly named in the CATNLF collaboration, the findings will feed into global aerospace standards that affect manufacturers like Bombardier and aircraft operators such as Air Canada.</p>\n<img src=\"https://www.nasa.gov/wp-content/uploads/2026/02/afrc2026-0018-051.jpg\" alt=\"NASA F-15B jet with CATNLF wing model attached beneath\" style=\"display:block; margin:0 auto;\">\n<img src=\"https://www.nasa.gov/wp-content/uploads/2024/06/aero-research-opp-072024.jpg\" alt=\"Concept illustration of advanced laminar flow wing design\" style=\"display:block; margin:0 auto;\">\n\n<h2>The ISS Report</h2>\n<p>After weeks of scheduling adjustments due to weather and traffic at the orbital outpost, NASA’s SpaceX Crew-12 mission successfully launched on February 13, 2026, at 5:15 a.m. EST from Kennedy Space Center. Aboard the Crew Dragon spacecraft are NASA astronauts Jessica Meir and Jack Hathaway, European Space Agency astronaut Sophie Adenot, and Roscosmos cosmonaut Andrey Fedyaev.</p>\n<p>The quartet is scheduled to dock with the International Space Station on Saturday, February 14, at 3:15 p.m. EST. Once aboard, they’ll join Expedition 74, conducting hundreds of experiments in microgravity—from cardiovascular health and blood flow dynamics to pharmaceutical stability and crew psychology.</p>\n<p>Notably, ESA’s Sophie Adenot is a French astronaut, but Canadian scientists continue to benefit from ISS research. Canadian experiments in bone loss mitigation and robotics (building on Canadarm2’s legacy) often share lab space with Crew-12’s planned investigations, particularly in the life sciences. The mission underscores the station’s role as a truly international laboratory—even as NASA eyes its eventual transition to commercial platforms.</p>\n<img src=\"https://pbs.twimg.com/amplify_video_thumb/2022288745110646784/img/PD4C0ub3l-bWVqNj.jpg\" alt=\"Crew-12 astronauts during launch aboard SpaceX Crew Dragon\" style=\"display:block; margin:0 auto;\">\n\n<h2>Call Of The Red Planet</h2>\n<p>While no new Mars missions launched this week, ongoing science from the Red Planet continues to intrigue. On February 12, NASA’s Mars Exploration Program highlighted a new study based on data from the Curiosity rover suggesting that non-biological processes alone cannot explain the abundance of organic compounds found in a recent rock sample.</p>\n<p>This finding doesn’t confirm past life—but it does reinforce that Mars once hosted complex chemistry potentially conducive to life. Meanwhile, the Mars Reconnaissance Orbiter captured striking images of windblown sand dunes, offering fresh insights into Martian geology and seasonal changes.</p>\n<p>Canadian researchers, though not directly operating Mars hardware, contribute to international teams analyzing rover data, particularly in mineralogy and atmospheric science. No Canadian-led Mars missions are scheduled, but Canada’s expertise in spectrometry and remote sensing remains valued by NASA and ESA collaborators.</p>\n<img src=\"https://pbs.twimg.com/media/HA6SCPObkAAH3db.jpg\" alt=\"Windblown sand dunes on Mars as seen by Mars Reconnaissance Orbiter\" style=\"display:block; margin:0 auto;\">\n\n<h2>In The News</h2>\n<p>In a significant step toward commercializing low Earth orbit, NASA announced on February 12 that it has selected Vast, a U.S.-based space startup, for the sixth private astronaut mission to the International Space Station. The mission is targeted for no earlier than summer 2027 and marks Vast’s first selection for an ISS flight.</p>\n<p>Vast plans to send four crew members (pending NASA and international partner approval) and will contract with SpaceX for launch services. The company will purchase mission support from NASA—including consumables, cargo delivery, and in-orbit resources—while NASA will buy return capacity for scientific samples requiring cold-chain transport.</p>\n<p>“Leveraging the remaining life of the space station with science and research-led commercial crewed missions is a critical part of the transition to commercial space stations,” said Vast CEO Max Haot. This move aligns with NASA’s broader strategy to foster a robust orbital economy as the ISS nears its planned retirement later this decade.</p>\n<p>Though no Canadian firms are involved in this particular mission, the growth of private astronaut flights opens potential avenues for Canadian researchers, entrepreneurs, or even future astronauts to access space through non-governmental channels—a shift that Canadian space stakeholders are closely watching.</p>\n<img src=\"https://www.nasa.gov/wp-content/uploads/2024/08/meatball-w-black-background.webp\" alt=\"NASA logo on black background\" style=\"display:block; margin:0 auto;\">\n\n<h3>Citations</h3>\n<ul>\n    <li>\"NASA Completes First Flight of Laminar Flow Scaled Wing Design\" - <a href=\"https://www.nasa.gov/image-article/nasa-completes-first-flight-of-laminar-flow-scaled-wing-design/\">https://www.nasa.gov/image-article/nasa-completes-first-flight-of-laminar-flow-scaled-wing-design/</a></li>\n    <li>\"NASA Selects Vast for Sixth Private Mission to Space Station\" - <a href=\"https://www.nasa.gov/news-release/nasa-selects-vast-for-sixth-private-mission-to-space-station/\">https://www.nasa.gov/news-release/nasa-selects-vast-for-sixth-private-mission-to-space-station/</a></li>\n    <li>NASA and International Space Station social media updates (February 6–13, 2026) - <a href=\"https://x.com/NASA/status/2022288774483382704\">https://x.com/NASA/status/2022288774483382704</a></li>\n</ul>",
+                "generationInfo": {
+                  "finish_reason": "stop"
+                }
+              }
+            ]
+          ]
+        },
+        "tokenUsage": {
+          "completionTokens": 2101,
+          "promptTokens": 13347,
+          "totalTokens": 15448
+        },
+        "messages": [
+          "Human: You are writing a weekly news roundup about NASA (National Aeronautics and Space Administration) from a Canadian perspective. Write naturally without forcing stereotypes.\n\n## TODAY'S DATE AND TEMPORAL ACCURACY - CRITICAL\n- TODAY'S DATE AND TIME: February 13, 2026 at 9:07 AM EST\n- Articles may discuss FUTURE events - do NOT report them as already completed\n- Use proper tense:\n  - Past tense: \"NASA launched...\" (for completed events)\n  - Future tense: \"NASA is scheduled to launch...\" or \"will launch...\" (for upcoming events)\n- If an article discusses a scheduled launch/event, clearly state it has NOT happened yet\n- Include specific dates/times for future events when available\n- VERIFY: Does the article say it happened, or that it WILL happen?\n- When uncertain about timing, check for keywords: \"scheduled\", \"planned\", \"upcoming\", \"will\", \"expected to\"\n\n## Format Requirements\n- Use HTML5 tags ONLY: <h1>, <h2>, <h3>, <p>, <strong>, <em>, <ul>, <li>, <a>, <img>\n- DO NOT set: font-family, max-width, font-size, or any CSS styling\n- Images: Use <img src=\"URL\" alt=\"description\" style=\"display:block; margin:0 auto;\">\n\n## Writing Style\n- Clear and concise - easy to read\n- Informative - convey accurate facts and specific details\n- Do not make assumptions or speculate\n- Add subtle humor where appropriate\n- Professional but conversational tone\n\n## Canadian Perspective\n- Highlight any Canadian connections (payloads, partnerships, technology)\n- Use Canadian spelling (favour, colour, centre)\n- Include context relevant to Canadian readers where appropriate\n- Don't force it - only mention Canada when naturally relevant\n\n## Source Materials (This Week Only)\nArticle Content: # Space News Digest\n\n*Generated on February 13, 2026*\n\n**Total Articles:** 2\n\n---\n\n## 1. [NASA Completes First Flight of Laminar Flow Scaled Wing Design](https://www.nasa.gov/image-article/nasa-completes-first-flight-of-laminar-flow-scaled-wing-design/)\n\n**Source:** NASA Image | **Date:** Feb 11, 2026 | **Length:** 587 words\n\n![Featured Image](https://www.nasa.gov/wp-content/uploads/2026/02/afrc2026-0018-051.jpg)\n\nNASA completed the first flight test of a scale-model wing designed to improve laminar flow, reducing drag and lowering fuel costs for future commercial aircraft.  The flight took place Jan. 29 at NASA’s Armstrong Flight Research Center in Edwards, California, using one of the agency’s F-15B research jets. The NASA-designed, 40-inch Crossflow Attenuated Natural Laminar Flow (CATNLF) wing model was attached to the aircraft’s underside vertically, like a fin.  The flight lasted about 75 minutes, during which the team ensured the aircraft could maneuver safely in flight with the additional wing model.  “It was incredible to see CATNLF fly after all of the hard work the team has put into preparing,” said Michelle Banchy, research principal investigator for CATNLF. “Finally seeing that F-15 take off and get CATNLF into the air made all that hard work worth it.”  NASA designed the CATNLF technology to improve the smooth flow of air, known as laminar flow, over swept-back wings, used in everything from airliners to fighter jets, by reducing disruptions that lead to drag. Maintaining laminar flow could help lower fuel burn and costs.  This flight was the first of up to 15 planned for the CATNLF series, which will test the design across a range of speeds, altitudes, and flight conditions.  “First flight was primarily focused on envelope expansion,” Banchy said. “We needed to ensure safe dynamic behavior of the wing model during flight before we can proceed to research maneuvers.”  During the flight, the team performed several maneuvers, such as turns, steady holds, and gentle pitch changes, at altitudes ranging from about 20,000 to nearly 34,000 feet, providing the first look at the aerodynamic characteristics of the wing model and confirming that it is working as expected.  The team measured laminar flow using several tools, including an infrared camera mounted on the aircraft and aimed at the wing model to collect thermal data during flight tests. They will use this data to confirm key aspects of the design and evaluate how effectively the model maintains smooth airflow.  “CATNLF technology opens the door to a practical approach to getting laminar flow on large, swept components, such as a wing or tail, which offer the greatest fuel burn reduction potential,” Banchy said.   Early results showed airflow over the aircraft closely matched predictions made using computer models, she said.  The first flight builds on earlier work accomplished through computer modeling, wind tunnel testing, ground tests, and high-speed taxi tests . NASA plans to continue flight tests to gather research data that will help further validate the CATNLF test article and its potential for future commercial aircraft designs. The CATNLF testing is a collaboration under NASA’s Flight Demonstrations and Capabilities project and Subsonic Vehicle Technologies and Tools project. The CATNLF concept has been supported through the combined efforts of NASA’s Advanced Air Vehicles Program and Integrated Aviation Systems Program under the agency’s Aeronautics Research Mission Directorate. Share Details Last Updated Feb 11, 2026 Editor Dede Dinius Contact Teresa Whiting &#116;e&#114;esa&#46;wh&#105;ti&#110;g&#64;na&#115;a&#46;&#103;o&#118; Related Terms Advanced Air Vehicles Program Aeronautics Research Mission Directorate Aeronautics Technology Armstrong Flight Research Center Flight Demos Capabilities Flight Innovation Integrated Aviation Systems Program Langley Research Center Explore More 8 min read ARMD Research Solicitations (Updated Feb. 4) Article 1 week ago 5 min read NASA Armstrong Contributions Propel Artemis, Deep Space Innovation Article 1 week ago 3 min read NASA Aims to Advance Hypersonic Flight Testing with New Awards Article 2 weeks ago Keep Exploring Discover More Topics From NASA Armstrong Flight Research Center Aeronautics Artemis II NASA Aircraft\n\n### Additional Images\n\n![Image 1](https://www.nasa.gov/wp-content/uploads/2024/06/aero-research-opp-072024.jpg)\n\n![Image 2](https://www.nasa.gov/wp-content/uploads/2025/03/psndl-f-18-in-flight47.jpg)\n\n![Image 3](https://www.nasa.gov/wp-content/uploads/2026/01/spaceworks-vehicle-flying-hot-comp-scaled-1.jpg)\n\n![Image 4](https://www.nasa.gov/wp-content/uploads/2018/02/afrc2018-0020-06_eclipse_composite_cropped-1.jpg)\n\n![Image 5](https://www.nasa.gov/wp-content/uploads/2025/05/p23-171-176.jpg)\n\n![Image 6](https://images-assets.nasa.gov/image/KSC-20230920-PH-FMX01_0467/KSC-20230920-PH-FMX01_0467~large.jpg)\n\n![Image 7](https://www.nasa.gov/wp-content/uploads/2015/06/370311main_ED08-0292-1_full.jpg)\n\n---\n\n## 2. [NASA Selects Vast for Sixth Private Mission to Space Station](https://www.nasa.gov/news-release/nasa-selects-vast-for-sixth-private-mission-to-space-station/)\n\n**Source:** NASA Mission | **Date:** Feb 12, 2026 | **Length:** 518 words\n\n![Featured Image](https://www.nasa.gov/wp-content/uploads/2024/08/meatball-w-black-background.webp)\n\nNASA and Vast have signed an order for the sixth private astronaut mission to the International Space Station, targeted to launch no earlier than summer 2027 from Florida. This private astronaut mission marks the company's first selection to the orbiting laboratory, underscoring NASA’s ongoing investment in fostering a commercial space economy and expanding opportunities for private industry in low Earth orbit. “Private astronaut missions represent more than access to the International Space Station — they create opportunities for new ideas, companies, and capabilities that further enhance American leadership in low Earth orbit and open doors for what’s next,” said NASA Administrator Jared Isaacman. “We’re proud to welcome Vast to this growing community of commercial partners. Each new entrant brings unique strengths that fuel a dynamic, innovative marketplace as we advance research and technology and prepare for missions to the Moon, Mars, and beyond.” The mission is expected to spend up to 14 days aboard the space station. A specific launch date will depend on overall spacecraft traffic at the orbital outpost and other planning considerations. “The International Space Station plays an essential role in shaping the future of low Earth orbit,” said Dana Weigel, manager, International Space Station Program at NASA’s Johnson Space Center in Houston. “By hosting private astronaut missions, the station helps accelerate innovation, opens new commercial pathways, and advances research strengthening the foundation of a thriving space economy.” Vast will submit four proposed crew members to NASA and its international partners for review. Once approved and confirmed, they will train with NASA, international partners, and SpaceX for their flight. The company has contracted with SpaceX as launch provider for transportation to and from the space station. “Vast is honored to have been selected by NASA for the sixth private astronaut mission to the International Space Station,” said Max Haot, CEO of Vast. “Leveraging the remaining life of the space station with science and research-led commercial crewed missions is a critical part of the transition to commercial space stations and fully unlocking the orbital economy.” The company will purchase mission services from NASA, including crew consumables, cargo delivery, storage, and other in-orbit resources for daily use. NASA will purchase the capability to return scientific samples that must remain cold during transit back to Earth. NASA made the selection from proposals received in response to its March 2025 NASA Research Announcement . Missions aboard the International Space Station, including private astronaut missions, help advance scientific knowledge and demonstrate new technologies in the unique microgravity environment. These commercial efforts in low Earth orbit are helping develop capabilities and technologies that could support NASA's long-term goals for missions beyond low Earth orbit, including deep space exploration to the Moon and eventually to Mars through the agency’s Artemis campaign. Learn more about NASA’s commercial space strategy at: https://www.nasa.gov/commercial-space -end- Jimi Russell Headquarters, Washington 202-358-1600 james.j.russell@nasa.gov Anna Schneider / Joseph Zakrzewski Johnson Space Center, Houston 281-483-5111 anna.c.schneider@nasa.gov / joseph.a.zakrzewski@nasa.gov Share Details Last Updated Feb 12, 2026 Location NASA Headquarters Related Terms Private Astronaut Missions Commercial Space Humans in Space International Space Station (ISS) ISS Research Johnson Space Center Kennedy Space Center\n\n---\n\n*End Of Articles*\n\nX Feed Content: # NASA Social Media Digest\n\n*Generated on February 13, 2026 at 2:07 PM UTC*\n\n#**Total Tweets:** 66 | **Sources:** NASA, NASA JPL, NASA Mars, NASA Artemis, NASA AdministratorISTRATOR, ISS\n\n---\n\n## NASA Tweets (Past Week)\n\n#### Tweet from Fri, Feb 13, 2026, 12:36 PM UTC\n\n**Summary:** After a successful launch, Crew-12 is en route to the @Space_Station, scheduled to arrive at about 3:15pm ET (2015 UTC) on Feb. 14.\n \nLearn when and where to watch—with or without a Valentine: https://t.co/LSzNM9iSyB https://t.co/5SIB4d8S8u\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/amplify_video_thumb/2022288745110646784/img/PD4C0ub3l-bWVqNj.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2022288774483382704)\n\n---\n\n#### Tweet from Fri, Feb 13, 2026, 11:45 AM UTC\n\n**Summary:** LIVE: Leaders from NASA, ESA, and SpaceX talk about Crew-12’s successful launch, its upcoming arrival at the @Space_Station, and next steps for the mission. https://t.co/2e5EP8gLf3\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2022275925891563838)\n\n---\n\n#### Tweet from Fri, Feb 13, 2026, 8:15 AM UTC\n\n**Summary:** LIVE: Time to head to the @Space_Station! NASA's Jessica Meir and Jack Hathaway, @ESA's Sophie Adenot, and cosmonaut Andrey Fedyaev are set to launch on our @SpaceX Crew-12 mission at 5:15am ET (1015 UTC). Share your questions for our hosts with #AskNASA. https://t.co/Y5FUla6aZm\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2022223125656600931)\n\n---\n\n#### Tweet from Thu, Feb 12, 2026, 9:31 PM UTC\n\n**Summary:** We've selected @vast for the sixth private astronaut mission to the @Space_Station, targeted for no earlier than summer 2027—the company's first selection to the orbiting laboratory. Read more: https://t.co/WAXa3iCaNb https://t.co/XoyBYbdltZ\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HA_NyVZXEAAG1Qj.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2022061025009254487)\n\n---\n\n#### Tweet from Thu, Feb 12, 2026, 4:55 PM UTC\n\n**Summary:** Crew-12 will launch to the @Space_Station no earlier than Feb. 13.\n\nLiftoff is scheduled for 5:15 a.m. EST (1015 UTC), and coverage begins here at 3:15am ET (0815 UTC). https://t.co/5oyaA6FrNb\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HA-Oq7KW8AAOM29.png\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2021991630585073780)\n\n---\n\n#### Tweet from Wed, Feb 11, 2026, 4:58 PM UTC\n\n**Summary:** From the earliest days of exploration to the missions shaping our future, NASA represents the spirit of discovery that defines our Nation. See how we're helping celebrate America's 250th birthday: https://t.co/WOU8KAcZve https://t.co/W6CfKTFJ3p\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HA5FsDAXgAEUl8k.jpg\n- Image 2: https://pbs.twimg.com/media/HA5FtCXW8AAQWCa.jpg\n- Image 3: https://pbs.twimg.com/media/HA5FvKLWQAAOgJV.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2021629968229204315)\n\n---\n\n#### Tweet from Tue, Feb 10, 2026, 10:03 PM UTC\n\n**Summary:** @0x_warith Crew-12 is currently scheduled to lift off at 5:15am ET (1015 UTC) on Friday, Feb. 13. More info: https://t.co/jdaEpXPQWP\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2021344281060118618)\n\n---\n\n#### Tweet from Tue, Feb 10, 2026, 10:00 PM UTC\n\n**Summary:** @slimshaddy71 Research aboard the @Space_Station is leading to advances in medicine, developing new materials, and contributing to our understanding of our home world. Here are a few examples: https://t.co/tCa0Kpbiq2\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2021343530111947125)\n\n---\n\n#### Tweet from Tue, Feb 10, 2026, 9:43 PM UTC\n\n**Summary:** Our Crew-12 mission is heading to the @Space_Station soon! \n\nLearn more about the four-person crew and their mission of scientific discovery: https://t.co/8s9ExkWuna https://t.co/W7hn8fa4ac\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HA09Z6KWoAA7e2g.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2021339341281165509)\n\n---\n\n#### Tweet from Tue, Feb 10, 2026, 3:42 PM UTC\n\n**Summary:** During Artemis II, our crew will get the chance to study the Moon's surface up close—and NASA scientists will track how the human body responds to deep space travel.\n\nExplore the science of Artemis II in our latest episode of Curious Universe: https://t.co/5pJCpcNerW https://t.co/4Tb8C0Lgme\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HAzqwdiXYAENc5k.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2021248461069328882)\n\n---\n\n#### Tweet from Mon, Feb 9, 2026, 5:26 PM UTC\n\n**Summary:** While NASA continues to eye March as the next potential @NASAArtemis launch opportunity, a targeted launch date will be set after completing a successful wet dress rehearsal and reviewing the data: https://t.co/CANXDUgpTz\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2020912254837833922)\n\n---\n\n#### Tweet from Mon, Feb 9, 2026, 4:00 PM UTC\n\n**Summary:** LIVE: Tune in as NASA and agency partners discuss the Crew-12 mission ahead of its launch and answer questions from the media. https://t.co/FbObypgUix\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2020890612216578094)\n\n---\n\n#### Tweet from Mon, Feb 9, 2026, 3:26 PM UTC\n\n**Summary:** NASA and @SpaceX are now planning to launch our Crew-12 mission to the @Space_Station no earlier than 5:38am ET (1038 UTC) on Thursday, Feb. 12, due to forecast weather conditions along the flight path of the Dragon spacecraft. More info: https://t.co/zLibTKxqPV https://t.co/ap3aA7nI9o\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HAudeCnXoAEdV1-.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2020882001570476237)\n\n---\n\n#### Tweet from Sun, Feb 8, 2026, 10:20 PM UTC\n\n**Summary:** @Space_Station @NASAArtemis On that note: If the @Space_Station touched down on the #SBLX football field tonight, you’d see they’re very nearly the same size! The orbiting lab is 357 feet end-to-end – almost the same size as a football field, including both end zones. https://t.co/RMmapEGu5m\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HAqyiQwasAAbVYI.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2020623794021499131)\n\n---\n\n#### Tweet from Sun, Feb 8, 2026, 10:06 PM UTC\n\n**Summary:** Did you know...\n\n...that the @NASAArtemis II Moon rocket is 322 feet tall? That’s just a few yards shy of the length of a football field.\n\nBet you thought we were going to say something else about #SBLX. 😉 https://t.co/xPj2uNlGWf\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HAqvYdBakAAogQY.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2020620221963554946)\n\n---\n\n#### Tweet from Sun, Feb 8, 2026, 4:41 PM UTC\n\n**Summary:** That’s a wrap on the Q&amp;A with Crew-12. Take a deep dive into the human health studies planned during their long-duration science mission aboard the @Space_Station, including adaption to low gravity and a new study examining subtle changes in blood flow. https://t.co/euN0rulxFz https://t.co/RRTxwHiyZM\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HApkpq1bEAEtApO.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2020538371245040042)\n\n---\n\n#### Tweet from Sun, Feb 8, 2026, 4:00 PM UTC\n\n**Summary:** Live now from @NASAKennedy: Watch the members of NASA’s @SpaceX Crew-12 mission discuss their upcoming launch to the @Space_Station. https://t.co/VtFBcyp3Xb https://t.co/DlDrUTbBCl\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HApbkzkakAAONxw.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2020528075818086518)\n\n---\n\n#### Tweet from Sat, Feb 7, 2026, 1:20 AM UTC\n\n**Summary:** Bubbles and baby stars 🫧\n \n@NASAHubble captured this image of a large, glowing gas bubble in a neighboring galaxy. This area is also one of the most active star-forming regions in the nearby universe. https://t.co/U8WYguSg5o https://t.co/VERvpFUt4O\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HAhINvFWkAAVDtP.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2019944282849988852)\n\n---\n\n#### Tweet from Fri, Feb 6, 2026, 10:37 PM UTC\n\n**Summary:** @Bashir_tr_wr The launch and docking of the Crew-12 mission will be streamed live on our digital platforms, including X. Live views from cameras on the @Space_Station are available 24 hours a day on our YouTube channel: https://t.co/s972Cn8aPO\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2019903205170098552)\n\n---\n\n#### Tweet from Fri, Feb 6, 2026, 10:23 PM UTC\n\n**Summary:** Our @SpaceX Crew-12 mission is targeted to lift off no earlier than Wednesday, Feb. 11, sending four new crew members to expand the frontiers of scientific discovery aboard the @Space_Station. Get the full schedule and see how to watch: https://t.co/S4N7UTGGqE https://t.co/oszKUBcyNk\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HAggIi6WIAIsLPs.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2019899767745077361)\n\n---\n\n#### Tweet from Fri, Feb 6, 2026, 5:25 PM UTC\n\n**Summary:** @huppydupp We have internships open to international students from countries with whom we have agreements. https://t.co/yHtOlk3gbk\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2019824720091504824)\n\n---\n\n#### Tweet from Fri, Feb 6, 2026, 5:24 PM UTC\n\n**Summary:** @headmanfaith18 Our internships are open to all majors. Take a look and see what's available: https://t.co/oPZM3m9oEZ\n\n**Source URL:** [View Tweet](https://x.com/NASA/status/2019824553007149281)\n\n---\n\n\n### Jet Propulsion Laboratory Tweets (Past Week)\n\n#### Tweet from Thu, Feb 12, 2026, 10:53 PM UTC\n\n**Summary:** You might know Orion’s Belt, but can you spot the full constellation – Orion the Hunter?\n\nLook for a line of three stars in the southeastern sky (the “belt”). From there, surrounding stars make up Orion’s shoulder, sword, head, and shield. https://t.co/iMuIXhO5KX\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/amplify_video_thumb/2022081409339604992/img/nKkRNhT-PezEqbCs.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAJPL/status/2022081661245304930)\n\n---\n\n\n### NASA Mars Tweets (Past Week)\n\n#### Tweet from Thu, Feb 12, 2026, 10:00 PM UTC\n\n**Summary:** So many cool stories here, but one of our favorites is following Team M&amp;M (\"Mud and Mars\") to the Stóra Laxá river as it carves through the Icelandic hills, revealing basalt rock deposited by volcanoes.\n\n**Source URL:** [View Tweet](https://x.com/NASAMars/status/2022068228797939772)\n\n---\n\n#### Tweet from Thu, Feb 12, 2026, 5:34 PM UTC\n\n**Summary:** By studying samples analyzed by the Curiosity rover, scientists have taken another step toward understanding whether life could have ever existed on Mars. \n\nA new study suggests that non-biological sources cannot fully account for the abundance of organic compounds found in a sample collected by the rover.\n\nDig into the details: https://t.co/zZKCgKEROr\n\n**Source URL:** [View Tweet](https://x.com/NASAMars/status/2022001374154854471)\n\n---\n\n#### Tweet from Thu, Feb 12, 2026, 12:23 AM UTC\n\n**Summary:** @Queencaul @NASAJPL That's right. It's just showing how looking at the image in different orientations can help you better see the shape of the landforms.\n\n**Source URL:** [View Tweet](https://x.com/NASAMars/status/2021741830426218812)\n\n---\n\n#### Tweet from Wed, Feb 11, 2026, 10:41 PM UTC\n\n**Summary:** Happens on Mars, too! This view of windblown sand comes from the Mars Reconnaissance Orbiter. When a landscape is seen from above, it can be hard to tell which are the high points and low points, until you view the scene with the light coming from the top. https://t.co/m2FSY86k8a https://t.co/1KKCGVvo5U\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HA6SCPObkAAH3db.jpg\n- Image 2: https://pbs.twimg.com/media/HA6SDUIbsAAauvz.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAMars/status/2021716325387972632)\n\n---\n\n#### Tweet from Sat, Feb 7, 2026, 9:43 PM UTC\n\n**Summary:** @davidwbrw Yeah, very low-light conditions, which these cameras weren't designed for.\n\n**Source URL:** [View Tweet](https://x.com/NASAMars/status/2020252070448886078)\n\n---\n\n#### Tweet from Sat, Feb 7, 2026, 9:42 PM UTC\n\n**Summary:** @cooreum2 Full-size download at: https://t.co/MpRcuVCP4u\n\n**Source URL:** [View Tweet](https://x.com/NASAMars/status/2020251914320113696)\n\n---\n\n#### Tweet from Fri, Feb 6, 2026, 4:24 PM UTC\n\n**Summary:** @KarenReneeBrow2 @NASAArtemis @NASAJPL https://t.co/VJpSDI9mn3\n\n**Source URL:** [View Tweet](https://x.com/NASAMars/status/2019809513260679550)\n\n---\n\n#### Tweet from Fri, Feb 6, 2026, 4:20 PM UTC\n\n**Summary:** Deimos is the smaller of Mars' two moons at about 9 miles (about 15 kilometers) wide. The bright \"star\" in this view from the Perseverance rover is Deimos moving through the pre-dawn sky.\n\nMore Red Planet facts: https://t.co/2sHvsB0g20 https://t.co/3dn56N4mfy\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HAfNAbaacAAtQCd.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAMars/status/2019808370031833463)\n\n---\n\n#### Tweet from Fri, Feb 6, 2026, 2:38 AM UTC\n\n**Summary:** @XF7Space @NASAArtemis @NASAJPL Not quite - the sample caches are stored on another part of the rover. The circled area shows where three microchips are attached that contain the names, physically stenciled on at a microscopic scale. https://t.co/6g8lY67ZkC\n\n**Source URL:** [View Tweet](https://x.com/NASAMars/status/2019601514227216426)\n\n---\n\n\n### NASA Artemis Tweets (Past Week)\n\n#### Tweet from Thu, Feb 12, 2026, 2:35 PM UTC\n\n**Summary:** Following last week's fueling test for Artemis II, engineers replaced seals in an area where a hydrogen leak was seen and remated the connections to the rocket. This week teams are conducting a range of tests in advance of the next rehearsal including at cryogenic temperatures and pressure.\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HA9uAYPbUAABZz1.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAArtemis/status/2021956309919150187)\n\n---\n\n#### Tweet from Wed, Feb 11, 2026, 9:46 PM UTC\n\n**Summary:** \"That is a true feat of humanity: someone putting all of their passion into these systems to make it all come together at T-0.\"\n\nJesse Berdis is deputy project manager for the Exploration Ground Systems mobile launcher 1. Check out his story: https://t.co/4plLHWlMMs https://t.co/4xVVtptrSV\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HA6HjvMWAAA5U_o.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAArtemis/status/2021702333877330201)\n\n---\n\n#### Tweet from Tue, Feb 10, 2026, 8:35 PM UTC\n\n**Summary:** Looking for some inspiration for your #NASAMoonCrew?\n \nYour dream team could be family and friends, pets, famous people, historical figures – the sky is the limit! Check out this creative brief to help decide who you would choose for your lunar mission: https://t.co/Jb0H2NyYWZ https://t.co/1jxlAaBoWk\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HA0t2F0XYAAZQ6M.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAArtemis/status/2021322219775774896)\n\n---\n\n#### Tweet from Mon, Feb 9, 2026, 9:32 PM UTC\n\n**Summary:** The Artemis II astronauts followed last week's wet dress rehearsal activities with a debrief with the launch team.\n\nThen, the crew jumped back into their simulations to stay prepared for the mission ahead. The earliest potential launch opportunities have moved to March. https://t.co/RzLIFjDMoC\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HAvxLuqWQAE_Wjs.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAArtemis/status/2020974047761150182)\n\n---\n\n#### Tweet from Mon, Feb 9, 2026, 3:57 PM UTC\n\n**Summary:** Teams also are adding additional time in the countdown to allow for more troubleshooting.\n\nMarch is the next potential launch opportunity. NASA will set a targeted launch date after completing a successful wet dress rehearsal test and reviewing the data. https://t.co/f6Ed8La8Y5 https://t.co/WJ6hz02DpB\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HAukm6PXwAAcNvy.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAArtemis/status/2020889848723181951)\n\n---\n\n#### Tweet from Mon, Feb 9, 2026, 3:57 PM UTC\n\n**Summary:** Last week's wet dress rehearsal test for the Artemis II mission brought teams one step closer to liftoff.\n\nSince the test, technicians have replaced two seals in the area where operators found a hydrogen leak. https://t.co/qXfUYg1J7A\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HAukml7XkAAdm0p.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAArtemis/status/2020889843291623695)\n\n---\n\n#### Tweet from Sun, Feb 8, 2026, 10:11 PM UTC\n\n**Summary:** @NASA Finally — Artemis gets the appropriately-timed football field comparison it deserves.\n\n**Source URL:** [View Tweet](https://x.com/NASAArtemis/status/2020621644767826050)\n\n---\n\n\n### NASA Administrator Jared Isaacman Tweets (Past Week)\n\n#### Tweet from Fri, Feb 13, 2026, 10:56 AM UTC\n\n**Summary:** @thenasaman @NASASpaceflight Great shot\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2022263671024493029)\n\n---\n\n#### Tweet from Fri, Feb 13, 2026, 9:51 AM UTC\n\n**Summary:** @NASA @Space_Station @esa @SpaceX Godspeed Crew-12\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2022247273795850684)\n\n---\n\n#### Tweet from Fri, Feb 13, 2026, 7:25 AM UTC\n\n**Summary:** @RocketLab @DIU_x I like it\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2022210473383670135)\n\n---\n\n#### Tweet from Fri, Feb 13, 2026, 12:23 AM UTC\n\n**Summary:** Another employee incentive flight in the books - many more to come. Jonathan Baker, chief of the spaceport development division at KSC, joined me for an F-5 flight today ahead of tomorrow morning’s Crew-12 launch 🇺🇸🚀 https://t.co/NxtHM2TZMW\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HA_00XsXoAACfax.jpg\n- Image 2: https://pbs.twimg.com/media/HA_00XAbsAQ8_NX.jpg\n- Image 3: https://pbs.twimg.com/media/HA_00X0aAAAJ3d3.jpg\n- Image 4: https://pbs.twimg.com/media/HA_00XBX0AAX73w.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2022104218224746799)\n\n---\n\n#### Tweet from Wed, Feb 11, 2026, 8:00 PM UTC\n\n**Summary:** I was pleased to welcome Director General @AschbacherJosef and our @esa partners to NASA Headquarters today.\n\nAs we move forward with our return to the Moon, the European Space Agency remains a key partner across much of NASA’s portfolio. Their contributions will be important as we build a sustained lunar presence and prepare for missions beyond.\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HA5vULJWEAAEO6e.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2021675681491673362)\n\n---\n\n#### Tweet from Tue, Feb 10, 2026, 1:20 AM UTC\n\n**Summary:** Grateful to join Director @mkratsios47 and the NSTC team today - representing top science and technology leadership from across the Administration.\n\nNASA is all in on executing @POTUS’s agenda: returning to the Moon, building a lunar base, igniting the orbital economy, increasing the rate of world changing science and discovery, and securing American leadership in the ultimate high ground.\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2021031486665916647)\n\n---\n\n#### Tweet from Mon, Feb 9, 2026, 10:45 PM UTC\n\n**Summary:** @NASA_Johnson @Space_Station @NASA Looking good crew.\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2020992561012244918)\n\n---\n\n#### Tweet from Mon, Feb 9, 2026, 10:45 PM UTC\n\n**Summary:** @SecWar 🇺🇸\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2020992418472980728)\n\n---\n\n#### Tweet from Mon, Feb 9, 2026, 10:12 PM UTC\n\n**Summary:** https://t.co/DLb2immna5\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HAv6LTBaAAIvtD-.jpg\n- Image 2: https://pbs.twimg.com/media/HAv6LTBaYAA6AMD.jpg\n- Image 3: https://pbs.twimg.com/media/HAv6LSiWYAApvv7.jpg\n- Image 4: https://pbs.twimg.com/media/HAv6LSeWwAI6kIi.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2020984085754282078)\n\n---\n\n#### Tweet from Mon, Feb 9, 2026, 10:11 PM UTC\n\n**Summary:** It will never get old seeing Kennedy Space Center from the air--especially with two human-rated rockets standing vertical on Pads 39B and 40 for Artemis II and Crew-12.\n\nIt was an honor to share the skies with @AFThunderbirds Thunderbird 7, Lt. Col. Tyler Keener, Thunderbird 8, Maj. Samuel Larson, and NASA Associate Administrator Amit Kshatriya.\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/amplify_video_thumb/2020983854815924224/img/4CiAa1hlrh-73EKU.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2020983926022602849)\n\n---\n\n#### Tweet from Sun, Feb 8, 2026, 12:29 PM UTC\n\n**Summary:** @elonmusk https://t.co/CG1pCdjTSc\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/tweet_video_thumb/HAorQSragAAnK7X.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2020474963942146233)\n\n---\n\n#### Tweet from Sun, Feb 8, 2026, 5:24 AM UTC\n\n**Summary:** @LaunchPhoto Looking good\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2020368077389721965)\n\n---\n\n#### Tweet from Sun, Feb 8, 2026, 1:08 AM UTC\n\n**Summary:** @SecAFOfficial @usairforce @USNavy @SuperBowl @28thBombWing Looking good Sir 🇺🇸\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2020303679564443958)\n\n---\n\n#### Tweet from Sat, Feb 7, 2026, 3:21 PM UTC\n\n**Summary:** @Stuck4ger @NASAhistory Actually, Bruce and Pete made very similar remarks.  Honestly, had to look it up myself to be sure.\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2020155968353395092)\n\n---\n\n#### Tweet from Fri, Feb 6, 2026, 11:47 PM UTC\n\n**Summary:** @AJamesMcCarthy @johnkrausphotos 💯🇺🇸\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2019920819606970774)\n\n---\n\n#### Tweet from Fri, Feb 6, 2026, 5:22 PM UTC\n\n**Summary:** After 50 days on the job, visits to every NASA center, a dozen town halls, and reviewing thousands of workforce submissions, it is clear there is much we can do to better empower our people and focus resources on the most pressing objectives.\n\nGetting back to the Moon means getting back to the basics. NASA must regain its core competencies in technical, engineering, and operational excellence, and in doing so, we’ll save up to $1B a year to fund more missions of world-changing science and discovery.\n\nWith the directive issued today, we are strengthening the NASA team and executing urgently on the President’s national space policy.\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HAfcl-cXkAAdxeD.jpg\n\n**Source URL:** [View Tweet](https://x.com/NASAAdmin/status/2019823962465923366)\n\n---\n\n\n### International Space Station Tweets (Past Week)\n\n#### Tweet from Fri, Feb 13, 2026, 10:41 AM UTC\n\n**Summary:** .@NASA's @SpaceX Crew-12 mission has launched to orbit and is headed toward the International Space Station for a docking at 3:15 p.m. EST on Saturday, Feb. 14. https://t.co/QAf8HEmlKL\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/amplify_video_thumb/2022259035345432577/img/4GZ4OZ1R5U_zVnOw.jpg\n\n**Source URL:** [View Tweet](https://x.com/Space_Station/status/2022259898352800190)\n\n---\n\n#### Tweet from Fri, Feb 13, 2026, 8:17 AM UTC\n\n**Summary:** The four @SpaceX Crew-12 members with @Astro_Jessica, @Astro_Hathaway, @Soph_Astro, and Andrey Fedyaev are in the Dragon spacecraft counting down to a launch at 5:15am ET today from Florida. https://t.co/PADqgGlcT5\n\n**Source URL:** [View Tweet](https://x.com/Space_Station/status/2022223549629706439)\n\n---\n\n#### Tweet from Thu, Feb 12, 2026, 6:19 PM UTC\n\n**Summary:** .@NASA and @SpaceX proceed toward Crew-12's launch targeted for 5:15am ET on Friday, Feb. 13. Meanwhile, Exp 74 monitored radiation, studied crew psychology, and maintained life support systems on the station. More... https://t.co/bq4UYTRDzW https://t.co/5NATtbhFg7\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HA-hl3mbsAAzR2U.jpg\n\n**Source URL:** [View Tweet](https://x.com/Space_Station/status/2022012791780225446)\n\n---\n\n#### Tweet from Wed, Feb 11, 2026, 6:30 PM UTC\n\n**Summary:** .@SpaceX Crew-12 targets launch for no earlier than 5:15am ET on Friday to begin its mission to the station as Exp 74 preps for their arrival and studies spacecraft fuel physics and crew psychology. https://t.co/eRT86iJMb9\n\n**Source URL:** [View Tweet](https://x.com/Space_Station/status/2021653144716054691)\n\n---\n\n#### Tweet from Tue, Feb 10, 2026, 5:31 PM UTC\n\n**Summary:** .@NASA's @SpaceX Crew-12 now targets launch for no earlier than Feb. 13. Meanwhile, Exp 74 studied psychology and heart health to investigate space-caused changes to stress, memory, and the cardiovascular system. https://t.co/nMfZuvTHfs\n\n**Source URL:** [View Tweet](https://x.com/Space_Station/status/2021275834217050553)\n\n---\n\n#### Tweet from Mon, Feb 9, 2026, 6:54 PM UTC\n\n**Summary:** On Monday, Exp 74 worked on pharmaceutical and exercise research gear and Soyuz descent simulations as @NASA adjusts @SpaceX Crew-12 launch date. https://t.co/LrBPwPiYug\n\n**Source URL:** [View Tweet](https://x.com/Space_Station/status/2020934331280261227)\n\n---\n\n#### Tweet from Mon, Feb 9, 2026, 4:05 PM UTC\n\n**Summary:** From Earth's orbit to the Moon! 🚀🌑 \n\nTechniques and tech developed on station have been adapted for imaging the lunar landscape during Artemis II. Learn about the science and technology tested on station helping to pave humanity's return to the Moon: https://t.co/MF3hCPHCF6 https://t.co/hrIzmWL2z2\n\n**Media Images:**\n- Image 1: https://pbs.twimg.com/media/HApvpC_WcAEaJaO.jpg\n- Image 2: https://pbs.twimg.com/media/HApvqTFW0AAH2Z4.jpg\n\n**Source URL:** [View Tweet](https://x.com/Space_Station/status/2020891691121594628)\n\n---\n\n#### Tweet from Sun, Feb 8, 2026, 10:31 PM UTC\n\n**Summary:** Now we’re ready for kickoff.\n\n**Source URL:** [View Tweet](https://x.com/Space_Station/status/2020626613797572832)\n\n---\n\n#### Tweet from Sun, Feb 8, 2026, 10:16 PM UTC\n\n**Summary:** @NASA @NASAArtemis But you know… everyone loves an original.\n\n**Source URL:** [View Tweet](https://x.com/Space_Station/status/2020622854333866115)\n\n---\n\n#### Tweet from Fri, Feb 6, 2026, 8:00 PM UTC\n\n**Summary:** .@NASA's @SpaceX Crew-12 mission is targeted to launch to the orbital outpost no earlier than 6:01am ET on Wednesday, Feb. 11.\n\n**Source URL:** [View Tweet](https://x.com/Space_Station/status/2019863820835930343)\n\n---\n\n#### Tweet from Fri, Feb 6, 2026, 5:54 PM UTC\n\n**Summary:** Exp 74 prepped for @NASA’s @SpaceX Crew-12 mission and studied space physics and the respiratory system at the end of the week. Dragon cargo transfers and Soyuz return simulations rounded out Friday's schedule. https://t.co/wqHRJfFj8q\n\n**Source URL:** [View Tweet](https://x.com/Space_Station/status/2019832076225376377)\n\n---\n\n\n---\n\n*End Of Tweets*\n\nEvent Content: # Space Events This Week\n\n*Generated on February 13, 2026 at 2:07 PM UTC*\n\n**Total Events:** 2\n\n---\n\n## 1. [SpaceX Crew-12 Pre-Launch News Conference](https://ll.thespacedevs.com/2.2.0/event/1330/)\n\n**Type:** [object Object] | **Location:** Kennedy Space Center, FL, USA | **Date:** 2026-02-09T16:00:00Z\n\n![Event Image](https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_on_slc_image_20240926072512.jpg)\n\nNASA, SpaceX, and ESA will host a press conference ahead of Crew-12 launch to the International Space Station with the following participants:\r\n- Steve Stich, manager, Commercial Crew Program, NASA\r\n- Dana Weigel, manager, International Space Station Program, NASA\r\n- Andreas Mogensen, Human Exploration Group Leader, ESA\r\n- William Gerstenmaier, vice president, Build and Flight Reliability, SpaceX\n\n[View Full Event Details →](https://ll.thespacedevs.com/2.2.0/event/1330/)\n\n---\n\n## 2. [SpaceX Crew-12 Crew Dragon Docking](https://ll.thespacedevs.com/2.2.0/event/1326/)\n\n**Type:** [object Object] | **Location:** International Space Station | **Date:** 2026-02-14T20:15:00Z\n\n![Event Image](https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/spacex_dm-2_cre_image_20200504065311.jpeg)\n\nThe Crew-12 Crew Dragon will dock autonomously to the International Space Station, carrying four astronauts to the International Space Station.\n\n[View Full Event Details →](https://ll.thespacedevs.com/2.2.0/event/1326/)\n\n---\n\n*End Of Events*\n\n\nLast month's citations (DO NOT reuse these sources): <h3>Citations</h3>\n<ul><li>No citations found</li></ul>\nNote: You may reference the same events if they're ongoing, but must find new source articles about them.\n\n## Available Images\n- Use images from articles provided in the source materials\n- Extract image URLs from the markdown content\n- Prioritize official NASA images when available\n- If no suitable images are available in the sources, it's acceptable to omit the image for that section\n\n## Article Structure\n\n**Main Title:**\n- Create one <h1> heading that captures the month's major NASA news theme\n- Format: <h1>Your Creative Monthly Title Here</h1>\n- Make it engaging and specific to this month's developments\n\n**Section 1: The Artemis Project (800 words maximum)**\n- Subheading: <h2>The Artemis Report</h2> or create a more specific title\n- Cover:\n  - Focus on: Upcoming launches, payload status, the Space Launch System rocket, the Orion capsule, delays, other Artemis project related news\n  - Clearly distinguish between completed milestones and scheduled/upcoming events\n  - Include TWO centered images if available\n  - Use format: <img src=\"URL\" alt=\"description\" style=\"display:block; margin:0 auto;\">\n\n**Section 2: Satellite Updates (800 words maximum)**\n- Subheading: <h2>Deep Space Updates</h2> or create a more specific title\n- Cover:\n  - Focus on: Non-Artemis related probes, space telescope launches or findings, in-development non-Artemis related programs\n  - Clearly distinguish between completed events and scheduled/upcoming events\n  - Include TWO centered images if available\n  - Use format: <img src=\"URL\" alt=\"description\" style=\"display:block; margin:0 auto;\">\n\n**Section 3: The International Space Station (500 words maximum)**\n- Subheading: <h2>The ISS Report</h2> or create a more specific title\n- Cover:\n  - Focus on: Ongoing missions and their objectives, upcoming missions, space station related launches\n  - Clearly distinguish between completed events and scheduled/upcoming events\n  - Include ONE centered image if available\n  - Use format: <img src=\"URL\" alt=\"description\" style=\"display:block; margin:0 auto;\">\n\n**Section 4: Mars (300 words maximum)**\n- Subheading: <h2>Call Of The Red Planet</h2> or create a more specific title\n- Cover:\n  - Focus on: Mars rovers, active Mars missions, upcoming Mars missions\n  - Clearly distinguish between completed events and scheduled/upcoming events\n  - Include ONE centered image if available\n  - Use format: <img src=\"URL\" alt=\"description\" style=\"display:block; margin:0 auto;\">\n\n**Section 5: Additional News (500 words maximum)**\n- Subheading: <h2>In The News</h2> or create a more specific title\n- Cover:\n  - Focus on: Cover any other interesting sounding news stories that were not part of a previous section\n  - Clearly distinguish between completed events and scheduled/upcoming events\n  - Include ONE centered image if available\n  - Use format: <img src=\"URL\" alt=\"description\" style=\"display:block; margin:0 auto;\">\n\n**Citations Section:**\nAt the end, add:\n<h3>Citations</h3>\n<ul>\n    <li>\"Article Title\" - <a href=\"full_url\">full_url</a></li>\n    <li>\"Article Title\" - <a href=\"full_url\">full_url</a></li>\n    <li>\"Article Title\" - <a href=\"full_url\">full_url</a></li>\n</ul>\n\nInclude ALL sources referenced in your post.\n\n## Content Guidelines\n- Use specific dates, times, and numbers from source material\n- Include mission names, program names, or vehicle names when available\n- Cite tweets from the various X feeds when referencing them\n- Word counts are maximums - it's fine to be shorter if there's limited news in a section\n- If a section has no significant news, briefly note that and keep it under 100 words\n- Connect related stories across sections when relevant\n- Distinguish clearly between past events (already happened) and scheduled/upcoming events (will happen)\n- Never report future events as if they've already occurred\n- For scheduled launches: include the planned date/time and use future tense\n\n## Final Checks\n- Did you avoid repeating last month's articles?\n- Is the main title compelling and specific?\n- Does each section have exactly ONE or TWO centered image(s) (where available)?\n- Are word counts within limits? (The Artemis Project: 800, Satellite Updates: 800, The International Space Station: 500, Mars: 300, Additional News: 500)\n- Are all citations present and correctly formatted?\n- Is all HTML valid with no CSS styling except image centering?\n- Did you correctly distinguish between completed and upcoming events?\n- Did you verify the timing of all events mentioned?\n\n## Output Format\nReturn ONLY the HTML article content with no preamble, explanations, or markdown code blocks.\nStart directly with the <h1> title, followed by the article sections.\n\nBegin writing the monthly NASA news roundup now."
+        ],
+        "estimatedTokens": 11840,
+        "options": {
+          "openai_api_key": {
+            "lc": 1,
+            "type": "secret",
+            "id": [
+              "OPENAI_API_KEY"
+            ]
+          },
+          "model": "qwen/qwen3-max",
+          "timeout": 60000,
+          "max_retries": 2,
+          "configuration": {
+            "baseURL": "https://openrouter.ai/api/v1",
+            "fetchOptions": {}
+          },
+          "model_kwargs": {}
+        },
+        "tokenUsage_cost": {
+          "input_cost": 0.0160164,
+          "output_cost": 0.012606,
+          "total_cost": 0.0286224
+        }
+      }
+    },
+    "tokensByModel": {
+      "grok-3-mini": {
+        "count": 1,
+        "estimatedTokens": 4383,
+        "actualTokens": 4411,
+        "completionTokens": 250,
+        "promptTokens": 4161,
+        "input_cost": 0.004161,
+        "output_cost": 0.00075,
+        "total_cost": 0.004911
+      },
+      "qwen/qwen3-max": {
+        "count": 1,
+        "estimatedTokens": 11840,
+        "actualTokens": 15448,
+        "completionTokens": 2101,
+        "promptTokens": 13347,
+        "input_cost": 0.0160164,
+        "output_cost": 0.012606,
+        "total_cost": 0.0286224
+      }
+    },
+    "cost": {
+      "input_cost": 0.020177399999999998,
+      "output_cost": 0.013356,
+      "total_cost": 0.0335334
+    }
+  }
+]

@@ -1,0 +1,44 @@
+const llmOutput = $input.first().json.output || $input.first().json.response || $input.first().json.text || '';
+
+// Reference the Process Post Content node
+const processPostContent = $('Process Post Content');
+const cleanData = processPostContent ? processPostContent.item.json : null;
+
+if (!cleanData) {
+  throw new Error('Could not find Process Post Content node data');
+}
+
+// Extract Instagram post from XML tags
+const igMatch = llmOutput.match(/<instagram_post>([\s\S]*?)<\/instagram_post>/);
+if (!igMatch) {
+  throw new Error('Could not find <instagram_post> tags in LLM output');
+}
+
+const igPostText = igMatch[1].trim();
+
+// Extract referer URL dynamically from image URL (for Cloudflare protection)
+let referer = '';
+if (cleanData.featured_image) {
+  // Use regex to extract protocol and domain from URL
+  const urlMatch = cleanData.featured_image.match(/^(https?:\/\/[^\/]+)/);
+  if (urlMatch) {
+    referer = urlMatch[1] + '/';
+  }
+}
+
+console.log('✅ Instagram Post Extracted:');
+console.log(igPostText);
+console.log(`Length: ${igPostText.length} chars`);
+console.log(`Image URL: ${cleanData.featured_image}`);
+console.log(`Referer: ${referer}`);
+
+return [{
+  json: {
+    platform: 'instagram',
+    post_text: igPostText,
+    image_url: cleanData.featured_image,  // Already cleaned!
+    referer: referer,  // Dynamic referer for HTTP headers
+    title: cleanData.title,
+    char_count: igPostText.length
+  }
+}];
