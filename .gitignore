@@ -1,0 +1,58 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+*.key
+*_key.txt
+*secret*
+*password*
+
+# API keys and credentials (but allow example/template files)
+*api_key*
+!*api_key_example*
+!*api_key_template*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+.cache/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
+*.egg-info/
+
+# Keep README and documentation
+!README.md
+!*.md
+
+# Except AI assistant instructions
+CLAUDE.md

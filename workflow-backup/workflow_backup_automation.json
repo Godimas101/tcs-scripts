@@ -1,0 +1,304 @@
+{
+  "name": "Workflow Backup to GitHub (Private Repo)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 2 * * *"
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300],
+      "notes": "Runs daily at 2 AM - adjust schedule as needed"
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.N8N_HOST }}/api/v1/workflows",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-N8N-API-KEY",
+              "value": "={{ $env.N8N_API_KEY }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "get-workflow-list",
+      "name": "Get All Workflows",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300],
+      "notes": "Fetches list of all workflows from n8n API"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract workflow IDs and names from API response\n// Handle different possible response structures\nlet workflows;\n\nif (Array.isArray($input.item.json)) {\n  // Response is already an array\n  workflows = $input.item.json;\n} else if ($input.item.json.data && Array.isArray($input.item.json.data)) {\n  // Response has data property with array\n  workflows = $input.item.json.data;\n} else if ($input.item.json.workflows && Array.isArray($input.item.json.workflows)) {\n  // Response has workflows property with array\n  workflows = $input.item.json.workflows;\n} else {\n  // Unexpected structure - provide helpful error\n  throw new Error(\n    'Unexpected API response structure. ' +\n    'Expected array of workflows. ' +\n    'Received: ' + JSON.stringify($input.item.json).substring(0, 500)\n  );\n}\n\nconst workflowList = workflows.map(wf => ({\n  id: wf.id,\n  name: wf.name,\n  active: wf.active,\n  updatedAt: wf.updatedAt\n}));\n\nreturn workflowList.map(wf => ({ json: wf }));"
+      },
+      "id": "parse-workflow-list",
+      "name": "Parse Workflow List",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300],
+      "notes": "Extracts workflow IDs and metadata"
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.N8N_HOST }}/api/v1/workflows/{{ $json.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-N8N-API-KEY",
+              "value": "={{ $env.N8N_API_KEY }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "get-workflow-details",
+      "name": "Get Workflow Details",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 300],
+      "notes": "Fetches full JSON for each workflow"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Prepare workflow data for GitHub commit\nconst workflowData = $input.item.json;\n\n// Sanitize filename (remove special characters)\nconst sanitizedName = workflowData.name\n  .replace(/[^a-zA-Z0-9-_ ]/g, '')\n  .replace(/\\s+/g, '_')\n  .toLowerCase();\n\nconst filename = `${sanitizedName}_${workflowData.id}.json`;\nconst filepath = `workflows/${filename}`;\n\n// Format workflow JSON with proper indentation\nconst workflowJson = JSON.stringify(workflowData, null, 2);\n\n// Base64 encode for GitHub API\nconst base64Content = Buffer.from(workflowJson).toString('base64');\n\n// Generate commit message\nconst timestamp = new Date().toISOString();\nconst commitMessage = `Auto-backup: ${workflowData.name} (${timestamp})`;\n\nreturn [{\n  json: {\n    filename: filename,\n    filepath: filepath,\n    content: base64Content,\n    commitMessage: commitMessage,\n    workflowName: workflowData.name,\n    workflowId: workflowData.id,\n    workflowActive: workflowData.active,\n    timestamp: timestamp\n  }\n}];"
+      },
+      "id": "prepare-for-github",
+      "name": "Prepare for GitHub",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1120, 300],
+      "notes": "Formats workflow JSON and creates commit message"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/{{ $env.GITHUB_USERNAME }}/{{ $env.GITHUB_REPO }}/contents/{{ $json.filepath }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.GITHUB_TOKEN }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2022-11-28"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "check-file-exists",
+      "name": "Check File Exists",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1340, 300],
+      "notes": "Checks if workflow file already exists in GitHub"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Determine if this is a create or update operation\nconst githubResponse = $input.item.json;\n\n// Get data from previous node\nconst preparedData = $node[\"Prepare for GitHub\"].json;\n\n// Check if file exists (has sha property and no error status)\nif (githubResponse.sha && !githubResponse.status) {\n  // File exists - need SHA for update\n  return [{\n    json: {\n      ...preparedData,\n      operation: 'update',\n      sha: githubResponse.sha,\n      message: `Update: ${preparedData.workflowName} (${preparedData.timestamp})`\n    }\n  }];\n} else {\n  // File doesn't exist - create new\n  return [{\n    json: {\n      ...preparedData,\n      operation: 'create',\n      message: `Create: ${preparedData.workflowName} (${preparedData.timestamp})`\n    }\n  }];\n}"
+      },
+      "id": "determine-operation",
+      "name": "Determine Operation",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1560, 300],
+      "notes": "Decides whether to create or update file"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://api.github.com/repos/{{ $env.GITHUB_USERNAME }}/{{ $env.GITHUB_REPO }}/contents/{{ $json.filepath }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.GITHUB_TOKEN }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2022-11-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message",
+              "value": "={{ $json.message }}"
+            },
+            {
+              "name": "content",
+              "value": "={{ $json.content }}"
+            },
+            {
+              "name": "sha",
+              "value": "={{ $json.sha }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "commit-to-github",
+      "name": "Commit to GitHub",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1780, 300],
+      "notes": "Creates or updates workflow file in private repo"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Generate summary report of backup operation\nconst items = $input.all();\n\nconst summary = {\n  totalWorkflows: items.length,\n  successful: items.filter(i => i.json.commit && !i.json.status).length,\n  failed: items.filter(i => i.json.status || !i.json.commit).length,\n  timestamp: new Date().toISOString(),\n  workflows: items.map(i => {\n    if (i.json.status) {\n      // Failed commit (409 or other error)\n      return {\n        name: 'Unknown (failed)',\n        operation: 'failed',\n        error: i.json.message || 'Unknown error',\n        status: i.json.status\n      };\n    } else if (i.json.commit) {\n      // Successful commit\n      return {\n        name: i.json.content?.name || 'Unknown',\n        operation: i.json.commit.message?.startsWith('Create') ? 'created' : 'updated',\n        url: i.json.content?.html_url || 'No URL',\n        sha: i.json.commit.sha\n      };\n    } else {\n      // Unexpected structure\n      return {\n        name: 'Unknown',\n        operation: 'unknown',\n        error: 'Unexpected response structure'\n      };\n    }\n  })\n};\n\nreturn [{ json: summary }];"
+      },
+      "id": "generate-summary",
+      "name": "Generate Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2000, 300],
+      "notes": "Creates backup operation summary"
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get All Workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get All Workflows": {
+      "main": [
+        [
+          {
+            "node": "Parse Workflow List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Workflow List": {
+      "main": [
+        [
+          {
+            "node": "Get Workflow Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Workflow Details": {
+      "main": [
+        [
+          {
+            "node": "Prepare for GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare for GitHub": {
+      "main": [
+        [
+          {
+            "node": "Check File Exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check File Exists": {
+      "main": [
+        [
+          {
+            "node": "Determine Operation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Determine Operation": {
+      "main": [
+        [
+          {
+            "node": "Commit to GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Commit to GitHub": {
+      "main": [
+        [
+          {
+            "node": "Generate Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-02-24T00:00:00.000Z",
+  "versionId": "1"
+}
