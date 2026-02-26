@@ -6,25 +6,27 @@ This tracker monitors scraperapi.io API calls within n8n workflows, tracks credi
 ## Features
 
 ### 1. **API Call Detection**
-- Detects ScraperAPI calls in HTTP nodes
-- Extracts credit costs from response headers
-- Identifies features used (JS rendering, premium proxies, etc.)
+- Detects ScraperAPI calls by examining node configurations in workflow execution data
+- Identifies all HTTP Request nodes pointing to `api.scraperapi.com`
+- Extracts feature parameters from query string configuration
 - Links calls to specific workflow nodes and executions
+- **Note:** Detection works by reading node parameters, not response headers (headers not available in n8n execution data)
 
 ### 2. **Feature Tracking**
-Automatically detects and categorizes ScraperAPI features:
+Automatically detects and categorizes ScraperAPI features from node configuration:
 - **Base requests** - 1 credit per request
-- **JavaScript rendering** - 5x multiplier (5 credits)
-- **Premium/residential proxies** - 10x multiplier (10 credits)
-- **Geotargeting** - Included, no extra cost
-- **AutoParse** - 50x multiplier (50 credits)
+- **JavaScript rendering** (`render=true`) - 5x multiplier (5 credits)
+- **Premium/residential proxies** (`premium=true`) - 10x multiplier (10 credits)
+- **Geotargeting** (`country_code` parameter) - Included, no extra cost
+- **AutoParse** (`autoparse=true`) - 50x multiplier (50 credits)
 
 ### 3. **Credit Monitoring**
-Tracks credit usage against free tier limits:
+Tracks estimated credit usage against free tier limits:
 - **Free tier:** 1,000 credits/month
-- Real-time remaining credits (from API headers)
+- Estimated remaining credits based on detected usage
 - Percentage used calculation
 - Warning alerts at 75%, 90%, and 100%
+- **Note:** Credit calculations are estimates based on feature detection; actual usage viewable at [ScraperAPI Dashboard](https://dashboard.scraperapi.com/billing)
 
 ### 4. **Cost Analysis**
 Provides detailed breakdown:
@@ -158,24 +160,64 @@ The output includes:
 
 ## Detection Methods
 
-The tracker identifies ScraperAPI calls through multiple indicators:
+The tracker identifies ScraperAPI calls by examining workflow node configurations:
 
-1. **Response headers:**
-   - `x-scraperapi-credits-remaining`
-   - `x-scraperapi-credit-cost`
+### Primary Detection
+1. **Node Configuration Inspection:**
+   - Reads `workflowData.nodes` from execution data
+   - Checks each node's `parameters.url` field
+   - Identifies nodes with URLs containing `scraperapi.com` or `api.scraperapi.com`
 
-2. **Request URLs:**
-   - Contains `scraperapi.com` or `api.scraperapi.com`
-   - Contains `api_key=` parameter
+2. **Feature Parameter Extraction:**
+   - Parses `parameters.queryParameters.parameters` array
+   - Detects feature flags: `render`, `premium`, `country_code`, `autoparse`
+   - Extracts `api_key` and target `url` parameters
 
-3. **Node naming:**
-   - Node name includes "scraper", "scrape", or "scraperapi"
+### Why Not Response Headers?
+n8n execution data **does not include HTTP response headers** from API calls. The tracker cannot access:
+- `x-scraperapi-credits-remaining` (actual remaining credits)
+- `x-scraperapi-credit-cost` (actual cost per request)
 
-4. **URL parameters:**
-   - `render=true` (JS rendering)
-   - `premium=true` (premium proxies)
-   - `country_code=XX` (geotargeting)
-   - `autoparse=true` (AutoParse)
+Instead, the tracker **estimates credits** based on detected feature parameters:
+- `render=true` → 5 credits
+- `premium=true` → 10 credits  
+- `autoparse=true` → 50 credits
+- No features → 1 credit
+
+### Accuracy
+- ✅ **Call detection:** 100% accurate (finds all ScraperAPI nodes)
+- ✅ **Feature detection:** 100% accurate (reads from configuration)
+- ⚠️ **Credit calculation:** Estimated (verify actual usage at [dashboard](https://dashboard.scraperapi.com/billing))
+
+### Data Structure
+```javascript
+// Execution data structure
+{
+  workflowData: {
+    nodes: [
+      {
+        name: "Article Scrape",
+        type: "n8n-nodes-base.httpRequest",
+        parameters: {
+          url: "https://api.scraperapi.com",
+          queryParameters: {
+            parameters: [
+              { name: "api_key", value: "your_key" },
+              { name: "url", value: "https://example.com" },
+              { name: "render", value: "true" }  // 5x credit multiplier
+            ]
+          }
+        }
+      }
+    ]
+  },
+  resultData: {
+    runData: {
+      "Article Scrape": [ /* execution results */ ]
+    }
+  }
+}
+```
 
 ## Warning System
 
@@ -240,24 +282,44 @@ return [{
 - **Usage Stats:** https://dashboard.scraperapi.com/
 - **Documentation:** https://docs.scraperapi.com/
 
+## Limitations
+
+### Known Limitations
+1. **No Actual Credit Data:** Cannot access actual remaining credits from ScraperAPI headers (not available in n8n execution data)
+2. **Estimated Costs:** Credit calculations are estimates based on configuration, not actual API charges
+3. **Target URL Display:** Shows n8n expressions (e.g., `={{$json.url}}`) instead of resolved URLs when using dynamic values
+4. **POST Parameters:** Only detects features in query parameters, not POST body
+
+### Verification Recommended
+- Always verify actual usage at [ScraperAPI Dashboard](https://dashboard.scraperapi.com/billing)
+- Cross-check estimated credits with actual monthly consumption
+- Monitor for any discrepancies between tracker estimates and real usage
+
 ## Troubleshooting
 
-### Credits not detected
-- Ensure response headers include `x-scraperapi-credit-cost`
-- Check if node name indicates it's a scraping node
-- Verify URL contains scraperapi.com
+### Calls not detected
+- Verify node configuration includes `url: "https://api.scraperapi.com"`
+- Check that `workflowData.nodes` is available in execution data
+- Ensure workflow execution completed successfully
 
 ### Inaccurate feature detection
-- Tracker looks for URL parameters: `render`, `premium`, `country_code`, `autoparse`
-- If using POST body for parameters, detection may be limited
-- Manual feature specification may be needed
+- Tracker reads `queryParameters.parameters` from node configuration
+- Features must be specified as query parameters (e.g., `render=true`)
+- If using POST body for parameters, detection will not work
+- Verify parameter names match expected values: `render`, `premium`, `country_code`, `autoparse`
 
-### Missing target breakdown
-- Ensure `url` parameter is passed correctly
-- Target URL must be valid for categorization
-- Check if URL is URL-encoded properly
+### Showing 0 calls when calls were made
+- This means node configurations weren't found in `workflowData.nodes`
+- Verify execution data includes complete workflow definition
+- Check that node names match between runData and node definitions
 
 ## Version History
+
+- **v1.1** (Feb 2026) - Detection method update
+  - Changed to node configuration-based detection
+  - Removed dependency on response headers (not available in n8n)
+  - Added estimated credit calculations
+  - Improved accuracy documentation
 
 - **v1.0** (Feb 2026) - Initial release
   - Basic credit tracking

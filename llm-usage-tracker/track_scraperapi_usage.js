@@ -33,6 +33,19 @@ if (!runData) {
   }];
 }
 
+// Extract workflow node definitions to access parameters
+const workflowNodes = inputData.workflowData?.nodes || 
+                      inputData.data?.workflowData?.nodes || 
+                      [];
+
+// Build a lookup map of node configurations by node name
+const nodeConfigMap = {};
+workflowNodes.forEach(node => {
+  if (node.name) {
+    nodeConfigMap[node.name] = node;
+  }
+});
+
 // ScraperAPI pricing structure (scraperapi.io)
 // Free tier: 1,000 credits/month
 const SCRAPERAPI_PRICING = {
@@ -81,87 +94,77 @@ const SCRAPERAPI_PRICING = {
 const scraperapi_calls = {};
 const featureUsage = {};
 
-// Helper function to extract ScraperAPI data from HTTP node responses
-function extractScraperAPIData(nodeData, nodeName = '', execution = null) {
+// Helper function to extract ScraperAPI data from node configuration and execution
+function extractScraperAPIData(nodeData, nodeName = '', execution = null, nodeConfig = null) {
   const apiCalls = [];
   
   if (!nodeData || !Array.isArray(nodeData)) return apiCalls;
+  if (!nodeConfig) return apiCalls;
   
+  // Check if this node is using ScraperAPI by examining its configuration
+  const params = nodeConfig.parameters || {};
+  const requestUrl = params.url || '';
+  
+  // Check if URL is ScraperAPI
+  const isScraperAPINode = requestUrl.includes('scraperapi.com') || 
+                          requestUrl.includes('api.scraperapi.com');
+  
+  if (!isScraperAPINode) return apiCalls;
+  
+  // This is a ScraperAPI node - count each successful execution
   nodeData.forEach((item, itemIdx) => {
     if (item?.json) {
-      const json = item.json;
+      // Extract features from query parameters in node configuration
+      const queryParams = params.queryParameters?.parameters || [];
+      const features = {
+        js_render: false,
+        premium_proxy: false,
+        geotargeting: false,
+        autoparse: false
+      };
       
-      // Multiple ways to detect scraperapi.io usage:
-      // 1. Check request URL contains scraperapi.com or api.scraperapi.com
-      const requestUrl = json.requestUrl || 
-                        json.url || 
-                        item.binary?.data?.fileName || 
-                        '';
+      let targetUrl = 'unknown';
+      let apiKey = '';
       
-      // 2. Check response headers for scraperapi indicators
-      const headers = item.headers || json.headers || {};
-      const hasScraperAPIHeaders = 
-        headers['x-scraperapi-credits-remaining'] !== undefined ||
-        headers['x-scraperapi-credit-cost'] !== undefined ||
-        Object.keys(headers).some(h => h.toLowerCase().includes('scraperapi'));
-      
-      // 3. Check if node name contains scraperapi or similar
-      const nodeNameHasScraper = nodeName?.toLowerCase().includes('scraper') || 
-                                  nodeName?.toLowerCase().includes('scrape') ||
-                                  nodeName?.toLowerCase().includes('scraperapi');
-      
-      // 4. Check query parameters for api_key or scraperapi indicators
-      const hasScraperAPIParams = requestUrl.includes('api_key=') ||
-                                  requestUrl.includes('scraperapi.com') ||
-                                  requestUrl.includes('api.scraperapi.com');
-      
-      const isScraperAPI = 
-        hasScraperAPIHeaders ||
-        hasScraperAPIParams ||
-        (nodeNameHasScraper && requestUrl.includes('http'));
-      
-      if (isScraperAPI) {
-        // Extract credit usage from headers (if available)
-        let creditsUsed = parseInt(headers['x-scraperapi-credit-cost']) || null;
-        let creditsRemaining = parseInt(headers['x-scraperapi-credits-remaining']) || null;
+      // Parse query parameters
+      queryParams.forEach(param => {
+        const name = param.name?.toLowerCase();
+        const value = param.value?.toString().toLowerCase();
         
-        // Detect features used from URL parameters
-        const urlParams = new URLSearchParams(requestUrl.split('?')[1] || '');
-        const features = {
-          js_render: urlParams.get('render') === 'true' || 
-                    urlParams.get('js_render') === 'true',
-          premium_proxy: urlParams.get('premium') === 'true' || 
-                        urlParams.get('residential') === 'true',
-          geotargeting: urlParams.get('country_code') !== null,
-          autoparse: urlParams.get('autoparse') === 'true'
-        };
-        
-        // Calculate estimated credits if not provided in headers
-        if (creditsUsed === null) {
-          creditsUsed = calculateEstimatedCredits(features);
+        if (name === 'render' && value === 'true') {
+          features.js_render = true;
+        } else if (name === 'premium' && value === 'true') {
+          features.premium_proxy = true;
+        } else if (name === 'country_code') {
+          features.geotargeting = true;
+        } else if (name === 'autoparse' && value === 'true') {
+          features.autoparse = true;
+        } else if (name === 'url') {
+          targetUrl = param.value || 'unknown';
+        } else if (name === 'api_key') {
+          apiKey = param.value || '';
         }
+      });
+      
+      // Calculate credits used (headers not available in n8n execution data)
+      const creditsUsed = calculateEstimatedCredits(features);
+      
+      // No way to get actual credits remaining from execution data
+      const creditsRemaining = null;
         
-        // Extract target URL being scraped
-        let targetUrl = urlParams.get('url') || 'unknown';
-        if (requestUrl.includes('scraperapi.com') && !targetUrl) {
-          // Alternative: check if URL is passed in body
-          targetUrl = json.targetUrl || json.scrape_url || 'unknown';
-        }
-        
-        apiCalls.push({
-          url: requestUrl,
-          targetUrl: targetUrl,
-          method: json.method || 'GET',
-          statusCode: json.status || json.statusCode || 200,
-          headers: headers,
-          responseSize: JSON.stringify(json).length,
-          timestamp: new Date().toISOString(),
-          creditsUsed: creditsUsed,
-          creditsRemaining: creditsRemaining,
-          features: features,
-          itemIndex: itemIdx
-        });
-      }
+      apiCalls.push({
+        url: requestUrl,
+        targetUrl: targetUrl,
+        method: params.method || 'GET',
+        statusCode: 200, // Assume success if in execution data
+        responseSize: JSON.stringify(item.json).length,
+        timestamp: execution?.startTime ? new Date(execution.startTime).toISOString() : new Date().toISOString(),
+        creditsUsed: creditsUsed,
+        creditsRemaining: creditsRemaining,
+        features: features,
+        itemIndex: itemIdx,
+        apiKey: apiKey ? apiKey.substring(0, 8) + '...' : 'unknown'
+      });
     }
   });
   
@@ -203,14 +206,18 @@ function categorizeTarget(url) {
 // Process each node
 Object.keys(runData).forEach(nodeName => {
   const nodeExecutions = runData[nodeName];
+  const nodeConfig = nodeConfigMap[nodeName]; // Get node configuration
+  
+  // Skip if no node configuration found
+  if (!nodeConfig) return;
   
   // Process each execution in the node's array
   nodeExecutions.forEach((execution, idx) => {
     // Look for ScraperAPI calls in node data
     // Check main data
-    if (execution.main && Array.isArray(execution.main)) {
-      execution.main.forEach((mainOutput, outputIdx) => {
-        const apiCalls = extractScraperAPIData(mainOutput, nodeName, execution);
+    if (execution.data && execution.data.main && Array.isArray(execution.data.main)) {
+      execution.data.main.forEach((mainOutput, outputIdx) => {
+        const apiCalls = extractScraperAPIData(mainOutput, nodeName, execution, nodeConfig);
         
         if (apiCalls.length > 0) {
           const nodeKey = `${nodeName}_exec${idx}_output${outputIdx}`;
