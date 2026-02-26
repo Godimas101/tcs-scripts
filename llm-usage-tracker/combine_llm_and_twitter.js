@@ -1,5 +1,5 @@
 /**
- * Combine LLM, Twitter API, Browserless, and ScrapingBee usage data from merged outputs
+ * Combine LLM, Twitter API, Browserless, ScrapingBee, and ScraperAPI usage data from merged outputs
  * Creates unified summary with combined costs and usage metrics
  */
 
@@ -10,12 +10,13 @@ const llmData = items[0]?.json || {};
 const twitterData = items[1]?.json || {};
 const browserlessData = items[2]?.json || {};
 const scrapingbeeData = items[3]?.json || {};
+const scraperapiData = items[4]?.json || {};
 
 // Common workflow info
-const workflowName = llmData.workflow_name || twitterData.workflow_name || browserlessData.workflow_name || scrapingbeeData.workflow_name || 'Unknown Workflow';
-const executionId = llmData.execution_id || twitterData.execution_id || browserlessData.execution_id || scrapingbeeData.execution_id || '';
-const executionTime = llmData.execution_time || twitterData.execution_time || browserlessData.execution_time || scrapingbeeData.execution_date || new Date().toISOString();
-const executionStatus = twitterData.execution_status || browserlessData.execution_status || scrapingbeeData.execution_status || 'unknown';
+const workflowName = llmData.workflow_name || twitterData.workflow_name || browserlessData.workflow_name || scrapingbeeData.workflow_name || scraperapiData.workflow_name || 'Unknown Workflow';
+const executionId = llmData.execution_id || twitterData.execution_id || browserlessData.execution_id || scrapingbeeData.execution_id || scraperapiData.execution_id || '';
+const executionTime = llmData.execution_time || twitterData.execution_time || browserlessData.execution_time || scrapingbeeData.execution_date || scraperapiData.execution_time || new Date().toISOString();
+const executionStatus = twitterData.execution_status || browserlessData.execution_status || scrapingbeeData.execution_status || scraperapiData.execution_status || 'unknown';
 
 // LLM costs
 const llmCostUSD = parseFloat(llmData.total_cost_usd || 0);
@@ -29,15 +30,20 @@ const twitterCostCAD = parseFloat(twitterData.total_cost_cad || 0);
 const scrapingbeeCostUSD = parseFloat(scrapingbeeData.estimated_cost_usd || 0);
 const scrapingbeeCostCAD = scrapingbeeCostUSD * 1.35; // USD to CAD conversion
 
-// Combined totals (Note: Browserless and ScrapingBee are usage-based)
-const totalCostUSD = llmCostUSD + twitterCostUSD + scrapingbeeCostUSD;
-const totalCostCAD = llmCostCAD + twitterCostCAD + scrapingbeeCostCAD;
+// ScraperAPI costs (estimated from usage if on paid plan)
+const scraperapiCostUSD = parseFloat(scraperapiData.estimated_cost_usd || 0);
+const scraperapiCostCAD = scraperapiCostUSD * 1.35; // USD to CAD conversion
+
+// Combined totals (Note: Browserless, ScrapingBee, and ScraperAPI are usage-based)
+const totalCostUSD = llmCostUSD + twitterCostUSD + scrapingbeeCostUSD + scraperapiCostUSD;
+const totalCostCAD = llmCostCAD + twitterCostCAD + scrapingbeeCostCAD + scraperapiCostCAD;
 
 // Service flags
 const hasLLMUsage = (llmData.total_tokens || 0) > 0;
 const hasTwitterUsage = (twitterData.total_api_calls || 0) > 0;
 const hasBrowserlessUsage = (browserlessData.total_api_calls || 0) > 0;
 const hasScrapingBeeUsage = (scrapingbeeData.total_api_calls || 0) > 0;
+const hasScraperAPIUsage = (scraperapiData.total_api_calls || 0) > 0;
 
 // Build combined output (flattened for Data Table compatibility)
 const combined = {
@@ -52,6 +58,7 @@ const combined = {
   has_twitter_usage: hasTwitterUsage,
   has_browserless_usage: hasBrowserlessUsage,
   has_scrapingbee_usage: hasScrapingBeeUsage,
+  has_scraperapi_usage: hasScraperAPIUsage,
   
   // LLM usage (flattened)
   llm_total_tokens: llmData.total_tokens || 0,
@@ -102,16 +109,39 @@ const combined = {
   scrapingbee_cost_cad: parseFloat(scrapingbeeCostCAD.toFixed(6)),
   scrapingbee_summary: scrapingbeeData.summary || 'No ScrapingBee usage',
   
+  // ScraperAPI usage (flattened)
+  scraperapi_total_api_calls: scraperapiData.total_api_calls || 0,
+  scraperapi_total_credits_used: scraperapiData.total_credits_used || 0,
+  scraperapi_credits_remaining: scraperapiData.credits_remaining || 0,
+  scraperapi_current_plan: scraperapiData.current_plan || 'free',
+  scraperapi_percent_used: parseFloat(scraperapiData.percent_used || 0),
+  scraperapi_has_warnings: scraperapiData.has_warnings || false,
+  scraperapi_warning_level: scraperapiData.warning_level || 'low',
+  scraperapi_primary_feature: scraperapiData.primary_feature || 'base',
+  scraperapi_base_calls: scraperapiData.base_calls || 0,
+  scraperapi_js_render_calls: scraperapiData.js_render_calls || 0,
+  scraperapi_premium_proxy_calls: scraperapiData.premium_proxy_calls || 0,
+  scraperapi_autoparse_calls: scraperapiData.autoparse_calls || 0,
+  scraperapi_geotargeting_calls: scraperapiData.geotargeting_calls || 0,
+  scraperapi_base_credits: scraperapiData.base_credits || 0,
+  scraperapi_js_render_credits: scraperapiData.js_render_credits || 0,
+  scraperapi_premium_credits: scraperapiData.premium_credits || 0,
+  scraperapi_autoparse_credits: scraperapiData.autoparse_credits || 0,
+  scraperapi_top_targets: JSON.stringify(scraperapiData.top_targets || []),
+  scraperapi_cost_usd: parseFloat(scraperapiCostUSD.toFixed(6)),
+  scraperapi_cost_cad: parseFloat(scraperapiCostCAD.toFixed(6)),
+  scraperapi_summary: scraperapiData.summary || 'No ScraperAPI usage',
+  
   // Combined costs (flattened)
   total_cost_usd: parseFloat(totalCostUSD.toFixed(6)),
   total_cost_cad: parseFloat(totalCostCAD.toFixed(6)),
   
   // Human-readable summary
-  summary: buildSummary(workflowName, hasLLMUsage, hasTwitterUsage, hasBrowserlessUsage, hasScrapingBeeUsage, llmData, twitterData, browserlessData, scrapingbeeData, totalCostCAD)
+  summary: buildSummary(workflowName, hasLLMUsage, hasTwitterUsage, hasBrowserlessUsage, hasScrapingBeeUsage, hasScraperAPIUsage, llmData, twitterData, browserlessData, scrapingbeeData, scraperapiData, totalCostCAD)
 };
 
 // Helper function to build comprehensive summary
-function buildSummary(workflow, hasLLM, hasTwitter, hasBrowserless, hasScrapingBee, llm, twitter, browserless, scrapingbee, totalCAD) {
+function buildSummary(workflow, hasLLM, hasTwitter, hasBrowserless, hasScrapingBee, hasScraperAPI, llm, twitter, browserless, scrapingbee, scraperapi, totalCAD) {
   const parts = [workflow];
   const services = [];
   
@@ -131,11 +161,15 @@ function buildSummary(workflow, hasLLM, hasTwitter, hasBrowserless, hasScrapingB
     services.push(`ScrapingBee: ${scrapingbee.total_api_calls || 0} call(s), ${scrapingbee.total_credits_used || 0} credits`);
   }
   
+  if (hasScraperAPI) {
+    services.push(`ScraperAPI: ${scraperapi.total_api_calls || 0} call(s), ${scraperapi.total_credits_used || 0} credits`);
+  }
+  
   if (services.length > 0) {
     parts.push(services.join(' | '));
     
     // Add cost summary (only for services with costs)
-    if (hasLLM || hasTwitter || hasScrapingBee) {
+    if (hasLLM || hasTwitter || hasScrapingBee || hasScraperAPI) {
       parts.push(`Cost: $${totalCAD.toFixed(4)} CAD`);
     }
     
@@ -162,7 +196,10 @@ if (hasBrowserlessUsage) {
 if (hasScrapingBeeUsage) {
   console.log(`   ScrapingBee: ${combined.scrapingbee_total_api_calls} calls, ${combined.scrapingbee_total_credits_used} credits, ${combined.scrapingbee_percent_used}% used, $${scrapingbeeCostCAD.toFixed(4)} CAD`);
 }
-if (hasLLMUsage || hasTwitterUsage || hasScrapingBeeUsage) {
+if (hasScraperAPIUsage) {
+  console.log(`   ScraperAPI: ${combined.scraperapi_total_api_calls} calls, ${combined.scraperapi_total_credits_used} credits, ${combined.scraperapi_percent_used}% used, $${scraperapiCostCAD.toFixed(4)} CAD`);
+}
+if (hasLLMUsage || hasTwitterUsage || hasScrapingBeeUsage || hasScraperAPIUsage) {
   console.log(`   💰 TOTAL COST: $${totalCostUSD.toFixed(6)} USD / $${totalCostCAD.toFixed(4)} CAD`);
 }
 
