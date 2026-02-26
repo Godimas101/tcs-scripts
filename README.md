@@ -4,35 +4,28 @@
 
 ## What Lives Here?
 
-Scripts, tools, and automation magic that keep **The Canadian Space** running smoothly. This is where we store the code that makes robots do our bidding.
+The code nodes that power **The Canadian Space** automation. These are the sticks of glue holding the magic together behind the scenes — JavaScript functions, data transformers, and workflow logic that make n8n workflows actually work.
 
-## Featured Attractions
+## The Workflows
 
-### 🔄 Workflow Backup System (`workflow-backup/`)
+Each folder contains the code nodes and scripts for a specific Canadian Space content stream:
 
-The crown jewel of meta-automation:
+### 📰 Content Workflows
+- **canada-from-orbit/** - Canadian space news aggregation and curation
+- **the-daily-broadcast/** - Daily space news roundup
+- **the-spacex-report/** - SpaceX-focused coverage and updates
+- **the-commercial-space/** - Commercial space industry news
+- **the-nasa-overview/** - NASA missions and developments
+- **rocketlab-roundup/** - Rocket Lab news and launches
 
-- **Backs up n8n workflows** to a private GitHub repo
-- **Runs daily at 2 AM** because that's when the magic happens
-- **Backs itself up** (yes, the backup system backs itself up — mind blown 🤯)
-- **Handles 13 workflows** like a champ
+### 📱 Social & Publishing
+- **social-posts/** - Social media content generation and distribution
+- **llm-usage-tracker/** - AI API usage monitoring and cost tracking
 
-**The Script That Started It All:**
-```
-workflow-backup/
-├── workflow_backup_automation.json  ← Import this into n8n
-├── README.md                        ← Complete documentation
-├── QUICKSTART.md                    ← 10-minute setup guide
-├── CHANGELOG.md                     ← Version history
-└── .env.example                     ← Security template
-```
-
-### 🚀 Coming Soon™
-
-- More automation scripts
-- Productivity tools
-- Things that make beep-boop sounds
-- Whatever else needs automating
+### 🔧 Infrastructure
+- **workflow-backup/** - Automated n8n workflow backup system (backs itself up!)
+  - Daily backups to private GitHub repo
+  - Complete setup documentation and examples
 
 ## Quick Start
 
