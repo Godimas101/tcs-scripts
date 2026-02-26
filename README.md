@@ -27,13 +27,6 @@ Each folder contains the code nodes and scripts for a specific Canadian Space co
   - Daily backups to private GitHub repo
   - Complete setup documentation and examples
 
-## Quick Start
-
-1. Clone this repo
-2. Navigate to the script you want
-3. Read the README (yes, actually read it)
-4. Profit??? 📈
-
 ## Philosophy
 
 > "If you have to do it twice, automate it. If you have to automate it, over-engineer it. If you over-engineer it, write docs about it."
