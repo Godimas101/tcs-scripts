@@ -112,8 +112,12 @@
         "options": {
           "response": {
             "response": {
-              "neverError": true
+              "neverError": true,
+              "fullResponse": false
             }
+          },
+          "requestOptions": {
+            "includeInputDataInOutput": true
           }
         }
       },
@@ -126,7 +130,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Determine if this is a create or update operation\n// Process each GitHub response and match it with the correct workflow data\n\nconst allGithubResponses = $input.all();\nconst allPreparedData = $node[\"Prepare for GitHub\"].all();\n\nconst results = allGithubResponses.map((githubItem, index) => {\n  const githubResponse = githubItem.json;\n  const preparedData = allPreparedData[index].json;\n\n  // Check if file exists (has sha property and no error status)\n  if (githubResponse.sha && !githubResponse.status) {\n    // File exists - need SHA for update\n    return {\n      json: {\n        ...preparedData,\n        operation: 'update',\n        sha: githubResponse.sha,\n        message: `Update: ${preparedData.workflowName} (${preparedData.timestamp})`\n      }\n    };\n  } else {\n    // File doesn't exist - create new\n    return {\n      json: {\n        ...preparedData,\n        operation: 'create',\n        message: `Create: ${preparedData.workflowName} (${preparedData.timestamp})`\n      }\n    };\n  }\n});\n\nreturn results;"
+        "jsCode": "// Determine if this is a create or update operation\n// The HTTP Request node includes input data, so we have both GitHub response and prepared data\n\nconst item = $input.item.json;\n\n// The GitHub API response fields (sha if file exists)\nconst githubSha = item.sha;\nconst githubStatus = item.status;\n\n// The prepared data fields from earlier node\nconst filepath = item.filepath;\nconst content = item.content;\nconst workflowName = item.workflowName;\nconst workflowId = item.workflowId;\nconst workflowActive = item.workflowActive;\nconst timestamp = item.timestamp;\n\n// Check if file exists (has sha property and no error status)\nif (githubSha && !githubStatus) {\n  // File exists - need SHA for update\n  return {\n    json: {\n      filepath: filepath,\n      content: content,\n      workflowName: workflowName,\n      workflowId: workflowId,\n      workflowActive: workflowActive,\n      timestamp: timestamp,\n      operation: 'update',\n      sha: githubSha,\n      message: `Update: ${workflowName} (${timestamp})`\n    }\n  };\n} else {\n  // File doesn't exist - create new\n  return {\n    json: {\n      filepath: filepath,\n      content: content,\n      workflowName: workflowName,\n      workflowId: workflowId,\n      workflowActive: workflowActive,\n      timestamp: timestamp,\n      operation: 'create',\n      message: `Create: ${workflowName} (${timestamp})`\n    }\n  };\n}"
       },
       "id": "determine-operation",
       "name": "Determine Operation",
