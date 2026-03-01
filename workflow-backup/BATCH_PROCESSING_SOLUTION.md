@@ -39,20 +39,33 @@ The **Done** output fires only once — after ALL batches complete. Connect it t
 
 ---
 
-## Fix 2: Add Merge GitHub Response Node
+## Fix 2: Replace "Check File Exists" with "Check File and Merge" Code Node
+
+### Problem with previous approach
+`$node["NodeName"].item.json` does **not work** in n8n 2.9.2's external task runner. Both
+`merge_github_response.js` and the original `finalize_commit.js` failed with this error.
+
+### Solution
+**Delete** the "Check File Exists" HTTP Request node AND the "Merge GitHub Response" Code node.
+**Replace them** with a single Code node named **"Check File and Merge"**.
 
 ### Position
-Between **"Check File Exists"** and **"Determine Operation"**
+Between **"Prepare for GitHub"** and **"Determine Operation"**
 
 ### Code
-Use: [merge_github_response.js](merge_github_response.js)
+Use: [check_file_and_merge.js](check_file_and_merge.js)
 
-This node uses `$node["Prepare for GitHub"].item.json` which respects the `pairedItem` relationship — keeping each workflow's data correctly bound to its own GitHub response, regardless of execution order.
+This node:
+1. Reads prepared workflow data from `$input.item.json`
+2. Makes the GitHub API call itself using native `fetch`
+3. Returns the merged result — prepared data + GitHub file SHA — all in `$input.item.json`
+
+No `$node` references needed.
 
 ### Update Determine Operation
 Use: [determine_operation.js](determine_operation.js)
 
-This reads from `$input.item.json` which now contains the merged data from the previous node.
+Reads from `$input.item.json` which now contains the merged data.
 
 ---
 
@@ -65,22 +78,20 @@ Get All Workflows
     ↓
 Parse Workflow List
     ↓
-Split In Batches ──────────────────────────────── Done ──→ Generate Summary
+Loop Over Items ───────────────────────────────── Done ──→ Generate Summary
     ↓ (Loop)                                                      ↑
 Get Workflow Details                                              │
     ↓                                                             │
 Prepare for GitHub                                                │
     ↓                                                             │
-Check File Exists                                                 │
-    ↓                                                             │
-Merge GitHub Response                                             │
-    ↓                                                             │
+Check File and Merge  ← (Code node, replaces HTTP Request        │
+    ↓                     + Merge GitHub Response)               │
 Determine Operation                                               │
     ↓                                                             │
 Commit to GitHub                                                  │
     ↓                                                             │
 Finalize Commit ──────────────────────────────────────────────────┘
-                (loops back to Split In Batches for next batch)
+                (loops back to Loop Over Items for next batch)
 ```
 
 ---
