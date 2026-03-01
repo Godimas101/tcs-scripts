@@ -2,27 +2,22 @@
  * Check File and Merge
  * Replaces both "Check File Exists" (HTTP Request) and "Merge GitHub Response" nodes
  *
- * PLACEMENT: Between "Inject Credentials" (Set node) and "Determine Operation"
- * REQUIRES: A Set node named "Inject Credentials" immediately before this node that adds:
- *   - githubUsername: {{ $env.GITHUB_USERNAME }}
- *   - githubRepo:     {{ $env.GITHUB_REPO }}
- *   - githubToken:    {{ $env.GITHUB_TOKEN }}
- *   (Set node runs in main n8n process where $env is accessible)
+ * PLACEMENT: Between "Prepare for GitHub" and "Determine Operation"
  *
  * This node:
- * 1. Takes prepared workflow data + injected credentials from input
+ * 1. Takes prepared workflow data from "Prepare for GitHub"
  * 2. Makes the GitHub API call to check if file exists
  * 3. Returns merged data containing both the prepared data AND GitHub response
  *
- * This avoids both the $node and $env limitations in n8n 2.9.2's external task runner.
+ * Requires env vars set in docker-compose.yml:
+ *   GITHUB_USERNAME, GITHUB_REPO, GITHUB_TOKEN
  */
 
 const preparedData = $input.item.json;
 
-// Credentials injected by the preceding "Inject Credentials" Set node
-const githubUsername = preparedData.githubUsername;
-const githubRepo = preparedData.githubRepo;
-const githubToken = preparedData.githubToken;
+const githubUsername = $env.GITHUB_USERNAME;
+const githubRepo = $env.GITHUB_REPO;
+const githubToken = $env.GITHUB_TOKEN;
 const filepath = preparedData.filepath;
 
 const apiUrl = `https://api.github.com/repos/${githubUsername}/${githubRepo}/contents/${filepath}`;
@@ -58,17 +53,16 @@ try {
   };
 }
 
-// Return merged data - prepared data + GitHub response (credentials stripped out)
+// Return merged data - prepared data + GitHub response
 return {
   json: {
-    // Prepared data fields (from "Prepare for GitHub" via "Inject Credentials")
+    // Prepared data fields (from "Prepare for GitHub")
     filepath: preparedData.filepath,
     content: preparedData.content,
     workflowName: preparedData.workflowName,
     workflowId: preparedData.workflowId,
     workflowActive: preparedData.workflowActive,
     timestamp: preparedData.timestamp,
-    // githubUsername/githubRepo/githubToken intentionally excluded from output
 
     // GitHub API response fields
     sha: githubResponse.sha || null,
