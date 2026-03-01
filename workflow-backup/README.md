@@ -2,7 +2,7 @@
 
 Automated daily backup of all n8n workflows to this GitHub repository.
 
-Built using the [Automated daily workflow backup to GitHub](https://n8n.io/workflows/4064-automated-daily-workflow-backup-to-github/) template by Hugo.
+Built using the **[Automated daily workflow backup to GitHub](https://n8n.io/workflows/4064-automated-daily-workflow-backup-to-github/)** template (workflow #4064) by [Hugo](https://n8n.io/creators/hugop/) on n8n.io.
 
 ## How it works
 
