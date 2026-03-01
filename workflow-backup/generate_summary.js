@@ -1,37 +1,49 @@
 /**
  * Generate Summary
  * Creates backup operation summary report
+ *
+ * Expects input from "Finalize Commit" node which provides:
+ * - workflowName (always present, even for failures)
+ * - success (boolean)
+ * - operation ('create' or 'update')
+ * - html_url, commit_sha (for successes)
+ * - status, error_message (for failures)
  */
 
 // Generate summary report of backup operation
 const items = $input.all();
 
+const successful = items.filter(i => i.json.success === true);
+const failed = items.filter(i => i.json.success === false || i.json.status);
+
 const summary = {
   totalWorkflows: items.length,
-  successful: items.filter(i => i.json.commit && !i.json.status).length,
-  failed: items.filter(i => i.json.status || !i.json.commit).length,
+  successful: successful.length,
+  failed: failed.length,
   timestamp: new Date().toISOString(),
   workflows: items.map(i => {
-    if (i.json.status) {
-      // Failed commit (409 or other error)
+    const data = i.json;
+
+    if (!data.success || data.status) {
+      // Failed commit
       return {
-        name: 'Unknown (failed)',
+        name: data.workflowName || 'Unknown',
         operation: 'failed',
-        error: i.json.message || 'Unknown error',
-        status: i.json.status
+        error: data.error_message || data.status || 'Unknown error',
+        status: data.status || 'error'
       };
-    } else if (i.json.commit) {
+    } else if (data.commit) {
       // Successful commit
       return {
-        name: i.json.content?.name || 'Unknown',
-        operation: i.json.commit.message?.startsWith('Create') ? 'created' : 'updated',
-        url: i.json.content?.html_url || 'No URL',
-        sha: i.json.commit.sha
+        name: data.workflowName || data.content?.name || 'Unknown',
+        operation: data.operation === 'create' ? 'created' : 'updated',
+        url: data.html_url || 'No URL',
+        sha: data.commit_sha
       };
     } else {
       // Unexpected structure
       return {
-        name: 'Unknown',
+        name: data.workflowName || 'Unknown',
         operation: 'unknown',
         error: 'Unexpected response structure'
       };
