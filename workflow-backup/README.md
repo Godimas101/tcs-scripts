@@ -1,4 +1,24 @@
-# n8n Workflow Backup Automation
+# n8n Workflow Backup
+
+Automated daily backup of all n8n workflows to this GitHub repository.
+
+Built using the [Automated daily workflow backup to GitHub](https://n8n.io/workflows/4064-automated-daily-workflow-backup-to-github/) template by Hugo.
+
+## How it works
+
+1. **Schedule Trigger** — runs daily
+2. **List files from repo** (GitHub node) — fetches all existing backup files
+3. **Aggregate** — consolidates the file list into a single lookup item
+4. **Retrieve workflows** (n8n node) — fetches all workflows from the n8n instance
+5. Per workflow:
+   - Convert to JSON file → Base64 encode
+   - Generate filename and commit date
+   - **IF file exists** → Update file (GitHub node)
+   - **IF file is new** → Upload file (GitHub node)
+
+## Backed up workflows
+
+Workflow JSON files are stored in the root of this repository.
 
 Automatically backs up all n8n workflows to a private GitHub repository on a daily schedule.
 
