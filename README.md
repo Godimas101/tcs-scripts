@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=170&color=0:140A22,45:EC4899,100:8B5CF6&text=TCS%20Scripts&fontColor=ffffff&fontAlignY=35&fontSize=32&desc=Code%20nodes,%20automation%20logic,%20and%20the%20glue%20behind%20the%20content%20pipeline&descAlignY=57&descSize=18" />
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=170&color=0:140A22,45:EC4899,100:8B5CF6&text=%20TCS%20Scripts%20&fontColor=ffffff&fontAlignY=35&fontSize=32&textBg=true&desc=Code%20nodes,%20automation%20logic,%20and%20the%20glue%20behind%20the%20content%20pipeline&descAlignY=57&descSize=18" />
 </p>
 
 > **"Because the magic is usually just JavaScript with a deadline."**
