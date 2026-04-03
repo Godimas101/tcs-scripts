@@ -1,12 +1,22 @@
-# 🛠️ TCS Scripts - The Automation Toolbox
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=170&color=0:140A22,45:EC4899,100:8B5CF6&text=TCS%20Scripts&fontColor=ffffff&fontAlignY=35&fontSize=32&desc=Code%20nodes,%20automation%20logic,%20and%20the%20glue%20behind%20the%20content%20pipeline&descAlignY=57&descSize=18" />
+</p>
 
-> **"Why do it manually when you can over-engineer it?"** — Every developer ever
+> **"Because the magic is usually just JavaScript with a deadline."**
 
-## What Lives Here?
+The code node library for **The Canadian Space** automation stack. This repo holds the reusable logic, helpers, and workflow-side scripting that keep the n8n content pipelines running behind the scenes.
+
+## 🚀 Quick Start
+
+1. Open the folder for the content stream or workflow you care about
+2. Reuse or adapt the code node logic in n8n
+3. Keep script behavior versioned here instead of reinventing it in the editor every time
+
+## ✨ What lives here
 
 The code nodes that power **The Canadian Space** automation. These are the sticks of glue holding the magic together behind the scenes — JavaScript functions, data transformers, and workflow logic that make n8n workflows actually work.
 
-## The Workflows
+## 📂 The workflows
 
 Each folder contains the code nodes and scripts for a specific Canadian Space content stream:
 
