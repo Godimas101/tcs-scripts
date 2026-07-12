@@ -1,0 +1,14 @@
+# Add this service to /opt/tcs/n8n/docker-compose.yml alongside caddy, n8n,
+# n8n-mcp, and discordgsm. Same docker network = n8n can reach it at
+# http://image-prep:3001 via Docker's internal DNS.
+#
+# No host port mapping — service is unreachable from the public internet
+# (and from the host's curl too), only from inside the compose network.
+
+  image-prep:
+    build: /opt/tcs/image-prep
+    container_name: tcs-image-prep
+    restart: unless-stopped
+    # NO `ports:` block — internal-only on the compose network.
+    # Add the same network as the other services if you have an explicit
+    # network defined; default compose project network works otherwise.
