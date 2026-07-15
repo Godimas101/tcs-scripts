@@ -1,5 +1,12 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=170&color=0:140A22,45:EC4899,100:8B5CF6&text=%20TCS%20Scripts%20&fontColor=ffffff&fontAlignY=35&fontSize=32&textBg=true&desc=Code%20nodes,%20automation%20logic,%20and%20the%20glue%20behind%20the%20content%20pipeline&descAlignY=57&descSize=18" />
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=200&color=0:140A22,45:EC4899,100:8B5CF6&text=%20TCS%20Scripts%20&fontColor=ffffff&fontAlignY=42&fontSize=30&textBg=true&desc=Code%20nodes,%20automation%20logic,%20and%20the%20glue%20behind%20the%20content%20pipeline&descAlignY=68&descSize=17" />
+</p>
+
+<p align="center">
+  <a href="https://thecanadian.space"><img src="https://img.shields.io/badge/The%20Canadian%20Space-space%20blog-0EA5E9?style=for-the-badge&logo=rocket&logoColor=white" alt="TCS" /></a>
+  <a href="https://github.com/The-Canadian-Space/tcs-scripts/issues/new"><img src="https://img.shields.io/badge/Report%20a%20bug-red?style=for-the-badge&logo=github&logoColor=white" alt="Report a bug" /></a>
+  <img src="https://img.shields.io/badge/n8n-EA4B71?style=for-the-badge&logo=n8n&logoColor=white" alt="n8n" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=111827" alt="JavaScript" />
 </p>
 
 > **"Because the magic is usually just JavaScript with a deadline."**
@@ -47,11 +54,23 @@ We believe in:
 - ✅ Version control over panic
 - ✅ Testing in production (just kidding... mostly)
 
-## Support
+## 🐛 Found a bug?
 
-Found a bug? Feature request? Existential questions about automation?
+- **[Open an issue](https://github.com/The-Canadian-Space/tcs-scripts/issues/new)** — for reproducible bugs, feature requests, or existential questions about automation
+- If it's a broken code node in production, mention which workflow / which content stream
 
-Open an issue or submit a PR. We welcome contributions from humans and well-intentioned robots.
+## 🔗 Related
+
+- **Main site:** [thecanadian.space](https://thecanadian.space)
+- **Public wiki:** [wiki.thecanadian.space](https://wiki.thecanadian.space)
+- **[`tcs-tools`](https://github.com/The-Canadian-Space/tcs-tools)** — the Python utilities these code nodes call
+- **[`tcs-workflows`](https://github.com/The-Canadian-Space/tcs-workflows)** *(private)* — n8n workflow backups
+
+## 🧡 Support
+
+TCS is a personal project + portfolio piece. If you like what we're building, **Patreon** is where the running project log lives.
+
+[![Support on Patreon](https://raw.githubusercontent.com/Godimas101/personal-projects/main/patreon/images/buttons/patreon-medium.png)](https://patreon.com/Godimas101)
 
 ---
 
